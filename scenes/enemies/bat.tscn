@@ -78,7 +78,8 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_i6os3")
 MaxHp = 35.0
-Speed = 30.0
+Speed = 85.0
+Damage = 6.0
 ExpOrbScene = ExtResource("2_18mee")
 GoldCoinScene = ExtResource("3_jofwc")
 

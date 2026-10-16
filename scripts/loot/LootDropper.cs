@@ -38,7 +38,8 @@ public static class LootDropper
 		var chest = scene.Instantiate<Chest>();
 		chest.Tier = tier;
 		chest.IsFree = true;
-		World.SpawnDeferred(chest, position);
+		// Los enemigos atraviesan muros: si murió detrás de uno, el cofre aparece del lado del jugador
+		World.SpawnDeferredReachable(chest, position);
 		FloatingText.Spawn(position, "¡Cofre!", RarityInfo.GetColor(ItemRarity.Legendario), 1.2f);
 	}
 }

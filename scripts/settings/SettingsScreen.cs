@@ -28,7 +28,8 @@ public partial class SettingsScreen : CanvasLayer
 	private HSlider _master, _music, _sfx;
 	private Label _masterValue, _musicValue, _sfxValue;
 	private CheckBox _mute, _vsync, _dashPips, _toasts, _fps, _enemyLevel;
-	private OptionButton _windowMode, _resolution, _fpsLimit;
+	private OptionButton _windowMode, _resolution, _fpsLimit, _difficulty;
+	private Label _difficultyInfo;
 	private Label _messageLabel;
 	private bool _refreshing;
 
@@ -301,6 +302,11 @@ public partial class SettingsScreen : CanvasLayer
 	{
 		var tab = MakeTab("Juego");
 		tab.AddChild(new Control { CustomMinimumSize = new Vector2(0f, 6f) });
+		var names = new List<string>();
+		foreach (var d in Balance.Difficulties) names.Add(d.Name);
+		_difficulty = MakeOption(tab, "Dificultad", names, i => SettingsManager.Instance?.SetDifficulty(i));
+		_difficultyInfo = UiFactory.MakeWrappedLabel("", 12, UiFactory.TextMuted, 680f);
+		tab.AddChild(_difficultyInfo);
 		_dashPips   = MakeCheck(tab, "Mostrar cargas de dash debajo del personaje", on => SettingsManager.Instance?.SetShowDashPips(on));
 		_toasts     = MakeCheck(tab, "Mostrar aviso al recoger objetos", on => SettingsManager.Instance?.SetShowItemToasts(on));
 		_enemyLevel = MakeCheck(tab, "Mostrar nivel de los enemigos", on => SettingsManager.Instance?.SetShowEnemyLevel(on));
@@ -360,6 +366,9 @@ public partial class SettingsScreen : CanvasLayer
 		_toasts.ButtonPressed     = s.ShowItemToasts;
 		_enemyLevel.ButtonPressed = s.ShowEnemyLevel;
 		_fps.ButtonPressed        = s.ShowFps;
+		_difficulty.Selected      = s.DifficultyIndex;
+		var preset = Balance.GetDifficulty(s.DifficultyIndex);
+		_difficultyInfo.Text = $"{preset.Description} Se aplica al empezar una partida nueva.";
 
 		_refreshing = false;
 		RefreshControls();

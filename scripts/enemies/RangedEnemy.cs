@@ -11,11 +11,11 @@ public partial class RangedEnemy : CharacterBody2D, IEnemy
 
 	// ── Comportamiento de disparo ──────────────────────────────────────────
 	[Export] public float ShootRange   = 200f; // distancia a la que empieza a disparar
-	[Export] public float FireRate     = 2.5f; // segundos entre disparos
+	[Export] public float FireRate     = 2.0f; // segundos entre disparos (antes 2.5)
 	[Export] public PackedScene ProjectileScene; // SlimeThornWeapon.tscn
 
 	// ── Stats del proyectil ────────────────────────────────────────────────
-	[Export] public float ProjectileSpeed    = 120f;
+	[Export] public float ProjectileSpeed    = 150f; // antes 120
 	[Export] public float ProjectileLifetime = 4f;
 
 	//Drops
@@ -45,6 +45,7 @@ public partial class RangedEnemy : CharacterBody2D, IEnemy
 	public override void _Ready()
 	{
 		_currentHp = MaxHp;
+		CollisionMask = Enemy.EnemyPhysicsLayer; // los muros no los detienen (antes se atoraban)
 		_sprite    = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_player    = GetTree().GetFirstNodeInGroup("player") as Player;
 		_baseModulate = Modulate;

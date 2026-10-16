@@ -8,29 +8,50 @@ using Godot;
 /// Modelo de dificultad inspirado en Risk of Rain 2:
 ///   coeficiente = (1 + minutos * 0.0506 * ValorDificultad * modificadorJugador) * FactorMapa^mapasCompletados
 ///   nivelEnemigo = 1 + (coeficiente - 1) / 0.33
-///   vida enemiga  +30% por nivel, daño enemigo +20% por nivel
+///   vida enemiga  +33% por nivel, daño enemigo +20% por nivel
 ///   costo de cofres/tienda = costoBase * coeficiente
+/// El ValorDificultad sale de la dificultad elegida en Configuración → Juego (Normal, Difícil, Pesadilla).
 /// </summary>
 public static class Balance
 {
 	// ───────────────────────── Dificultad ─────────────────────────
-	/// <summary>1 = fácil, 2 = normal, 3 = difícil. Multiplica el crecimiento por tiempo.</summary>
-	public const float DifficultyValue = 2.5f;
+	/// <summary>Valor de dificultad por defecto (Normal). En RoR2: 1 = fácil, 2 = normal, 3 = difícil.</summary>
+	public const float DifficultyValue = 3.0f;
 	public const float TimeFactorPerMinute = 0.0506f;
 	/// <summary>Multiplicador del coeficiente por cada mapa completado.</summary>
 	public const float StageFactor = 1.25f;
 	public const float CoefficientPerLevel = 0.33f;
 
-	public static float Coefficient(float totalRunSeconds, int stagesCompleted, float playerDifficultyModifier)
+	/// <summary>Niveles de dificultad que el jugador elige en Configuración → Juego (aplican a partidas nuevas).</summary>
+	public static readonly DifficultyPreset[] Difficulties =
+	{
+		new DifficultyPreset {
+			Name = "Normal", Description = "La experiencia pensada para el juego.",
+			ScalingValue = 3.0f, EnemyHp = 1.00f, EnemyDamage = 1.00f, SpawnRate = 1.00f, EliteBonus = 0.00f, CreditMultiplier = 1.00f,
+		},
+		new DifficultyPreset {
+			Name = "Difícil", Description = "Enemigos más duros y más numerosos. +25% de Créditos.",
+			ScalingValue = 3.6f, EnemyHp = 1.15f, EnemyDamage = 1.25f, SpawnRate = 1.20f, EliteBonus = 0.03f, CreditMultiplier = 1.25f,
+		},
+		new DifficultyPreset {
+			Name = "Pesadilla", Description = "Solo para expertos. +50% de Créditos.",
+			ScalingValue = 4.5f, EnemyHp = 1.30f, EnemyDamage = 1.50f, SpawnRate = 1.40f, EliteBonus = 0.06f, CreditMultiplier = 1.50f,
+		},
+	};
+
+	public static DifficultyPreset GetDifficulty(int index)
+		=> Difficulties[Mathf.Clamp(index, 0, Difficulties.Length - 1)];
+
+	public static float Coefficient(float totalRunSeconds, int stagesCompleted, float playerDifficultyModifier, float difficultyValue = DifficultyValue)
 	{
 		float minutes = Mathf.Max(0f, totalRunSeconds) / 60f;
-		float timeFactor = TimeFactorPerMinute * DifficultyValue * Mathf.Max(0.1f, playerDifficultyModifier);
+		float timeFactor = TimeFactorPerMinute * difficultyValue * Mathf.Max(0.1f, playerDifficultyModifier);
 		return (1f + minutes * timeFactor) * Mathf.Pow(StageFactor, Mathf.Max(0, stagesCompleted));
 	}
 
 	public static float EnemyLevel(float coefficient) => 1f + Mathf.Max(0f, coefficient - 1f) / CoefficientPerLevel;
 
-	public static float EnemyHpMultiplier(float level)     => 1f + 0.30f * (level - 1f);
+	public static float EnemyHpMultiplier(float level)     => 1f + 0.33f * (level - 1f);
 	public static float EnemyDamageMultiplier(float level) => 1f + 0.20f * (level - 1f);
 	public static float EnemySpeedMultiplier(float level)  => Mathf.Min(1f + 0.03f * (level - 1f), 1.6f);
 	public static float EnemyXpMultiplier(float level)     => 1f + 0.25f * (level - 1f);
@@ -50,14 +71,41 @@ public static class Balance
 	public const float EliteVisualScale      = 1.5f;
 	public static readonly Color EliteTint   = new Color(1f, 0.45f, 0.45f);
 
+	/// <summary>Probabilidad base de élite al iniciar la partida (las torres pueden subirla).</summary>
+	public const float BaseEliteProbability = 0.05f;
 	/// <summary>Probabilidad de que un enemigo aparezca como élite.</summary>
 	public static float EliteChance(float baseProbability, float totalRunSeconds)
-		=> Mathf.Min(baseProbability + 0.005f * (totalRunSeconds / 60f), 0.25f);
+		=> Mathf.Min(baseProbability + 0.008f * (totalRunSeconds / 60f), 0.30f);
+
+	// ───────────────────────── Enemigos ─────────────────────────
+	/// <summary>
+	/// Segundos entre golpes de contacto de un mismo enemigo (antes 3 s, por eso casi no hacían daño).
+	/// La velocidad y el daño base de cada enemigo están en su escena (scenes/enemies/*.tscn).
+	/// </summary>
+	public const float EnemyContactCooldown = 1.0f;
+	/// <summary>Distancia a la que un enemigo cuerpo a cuerpo golpea al jugador.</summary>
+	public const float EnemyContactRange = 25f;
+	public const float RangedSpawnChance = 0.15f;
 
 	// Generación de enemigos
-	public const float MinSpawnInterval = 0.12f;
-	public static float SpawnInterval(float baseInterval, float minutesInMap, float playerDifficultyModifier)
-		=> Mathf.Max(MinSpawnInterval, baseInterval / (1f + 0.12f * minutesInMap * Mathf.Max(0.1f, playerDifficultyModifier)));
+	public const float MinSpawnInterval = 0.09f;
+	/// <summary>Multiplica la frecuencia de aparición en todos los mapas (1.35 = 35% más enemigos).</summary>
+	public const float SpawnRateMultiplier = 1.35f;
+	public static float SpawnInterval(float baseInterval, float minutesInMap, float playerDifficultyModifier, float spawnRate = 1f)
+		=> Mathf.Max(MinSpawnInterval,
+			baseInterval / (SpawnRateMultiplier * Mathf.Max(0.1f, spawnRate))
+			/ (1f + 0.15f * minutesInMap * Mathf.Max(0.1f, playerDifficultyModifier)));
+
+	/// <summary>Probabilidad de que cada aparición traiga un enemigo extra (grupos que crecen con el tiempo).</summary>
+	public static float ExtraSpawnChance(float minutesInMap) => Mathf.Min(0.6f, 0.07f * minutesInMap);
+	public const int MaxGroupSize = 4;
+
+	// Oleadas: cada cierto tiempo aparecen muchos enemigos seguidos
+	public const float WaveCooldown = 120f;
+	public const float WaveDuration = 25f;
+	public const float WaveSpawnInterval = 0.1f;
+	/// <summary>Los enemigos aparecen justo fuera de la pantalla, a esta distancia del borde.</summary>
+	public const float OffscreenSpawnMargin = 40f;
 
 	// ───────────────────────── Jugador ─────────────────────────
 	/// <summary>Escala global del daño de las armas (sustituye al antiguo DamageMultiplier = 6).</summary>
@@ -142,4 +190,21 @@ public static class Balance
 		};
 		return kind == ItemKind.Activo ? cost + 20 : cost;
 	}
+}
+
+/// <summary>Un nivel de dificultad (ver Balance.Difficulties).</summary>
+public sealed class DifficultyPreset
+{
+	public string Name;
+	public string Description;
+	/// <summary>Valor de dificultad de RoR2: qué tan rápido crece el coeficiente con el tiempo.</summary>
+	public float ScalingValue = Balance.DifficultyValue;
+	public float EnemyHp = 1f;
+	public float EnemyDamage = 1f;
+	/// <summary>Multiplica la frecuencia de aparición de enemigos.</summary>
+	public float SpawnRate = 1f;
+	/// <summary>Probabilidad de élite adicional.</summary>
+	public float EliteBonus;
+	/// <summary>Multiplica los Créditos ganados en la partida.</summary>
+	public float CreditMultiplier = 1f;
 }

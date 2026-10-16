@@ -80,7 +80,7 @@ public static class CharacterLibrary
 			Speed = 200f, MaxHp = 85f, DamageMultiplier = 1.05f,
 			Dash = new DashProfile {
 				Name = "Rodada", Description = "Esquiva rápida que se recarga pronto.",
-				Style = DashStyle.Rodada, Charges = 2, Distance = 125f, Recharge = 1.2f,
+				Style = DashStyle.Rodada, Charges = 2, Distance = 125f, Recharge = 5f,
 				Color = new Color(0.55f, 0.85f, 1f),
 			},
 			Affinities = {
@@ -108,7 +108,7 @@ public static class CharacterLibrary
 			Speed = 150f, MaxHp = 100f, DamageMultiplier = 1f,
 			Dash = new DashProfile {
 				Name = "Parpadeo", Description = "Teletransporte corto; deja una explosión arcana donde estabas.",
-				Style = DashStyle.Parpadeo, Charges = 2, Distance = 130f, Duration = 0.06f, Recharge = 2f,
+				Style = DashStyle.Parpadeo, Charges = 2, Distance = 130f, Duration = 0.06f, Recharge = 7f,
 				Color = new Color(0.75f, 0.45f, 1f),
 			},
 			Affinities = {
@@ -122,7 +122,7 @@ public static class CharacterLibrary
 			Speed = 135f, MaxHp = 120f, DamageMultiplier = 1.1f,
 			Dash = new DashProfile {
 				Name = "Onda expansiva", Description = "Al terminar empuja y ralentiza a los enemigos alrededor.",
-				Style = DashStyle.OndaExpansiva, Charges = 2, Distance = 110f, Recharge = 2.2f,
+				Style = DashStyle.OndaExpansiva, Charges = 1, Distance = 110f, Recharge = 4f,
 				Color = new Color(0.6f, 0.85f, 1f),
 			},
 			Affinities = {
@@ -139,7 +139,7 @@ public static class CharacterLibrary
 			Speed = 180f, MaxHp = 90f, DamageMultiplier = 1f, BonusCritChance = 0.08f,
 			Dash = new DashProfile {
 				Name = "Paso sombrío", Description = "Tu siguiente golpe en 2 s es crítico seguro.",
-				Style = DashStyle.PasoSombrio, Charges = 2, Distance = 130f, Recharge = 1.6f,
+				Style = DashStyle.PasoSombrio, Charges = 2, Distance = 130f, Recharge = 3f,
 				Color = new Color(0.6f, 0.4f, 0.85f),
 			},
 			Affinities = {
@@ -149,7 +149,7 @@ public static class CharacterLibrary
 
 		// ── Personajes provisionales (sprite de Cimarron con tinte) ──────────
 		new CharacterData {
-			Name = "El Prefecto", Description = "Nadie se mueve hasta que él lo diga.",
+			Name = "Monica", Description = "PROVISIONAL",
 			Archetype = "Tanque inamovible",
 			ScenePath = CimarronScene, IconPath = CimarronIcon, IsPlaceholder = true,
 			Tint = new Color(0.7f, 0.75f, 0.85f),
@@ -166,7 +166,7 @@ public static class CharacterLibrary
 			},
 		},
 		new CharacterData {
-			Name = "La Atleta", Description = "Llega primero a todo, incluso al peligro.",
+			Name = "OScar", Description = "PROVISIONAL",
 			Archetype = "Velocista",
 			ScenePath = CimarronScene, IconPath = CimarronIcon, IsPlaceholder = true,
 			Tint = new Color(1f, 0.75f, 0.6f),
@@ -174,7 +174,7 @@ public static class CharacterLibrary
 			ExtraStats = s => s.AttackSpeedMultiplier += 0.05f, ExtraStatsText = "Vel. ataque +5%",
 			Dash = new DashProfile {
 				Name = "Sprint", Description = "Muchas cargas cortas; cada una da +30% de velocidad 1.5 s.",
-				Style = DashStyle.Sprint, Charges = 3, Distance = 85f, Duration = 0.18f, Recharge = 1f, Cooldown = 0.15f,
+				Style = DashStyle.Sprint, Charges = 3, Distance = 85f, Duration = 0.18f, Recharge = 2f, Cooldown = 0.15f,
 				Color = new Color(1f, 0.7f, 0.4f),
 			},
 			Affinities = {
@@ -183,7 +183,7 @@ public static class CharacterLibrary
 			},
 		},
 		new CharacterData {
-			Name = "La Ingeniera", Description = "Si no existe, lo construye.",
+			Name = "PROVISIONAL", Description = "PROVISIONAL",
 			Archetype = "Constructora",
 			ScenePath = CimarronScene, IconPath = CimarronIcon, IsPlaceholder = true,
 			Tint = new Color(1f, 0.9f, 0.55f),
@@ -191,7 +191,7 @@ public static class CharacterLibrary
 			ExtraStats = s => s.ActiveCooldownMultiplier *= 0.9f, ExtraStatsText = "Enfriamiento de activos -10%",
 			Dash = new DashProfile {
 				Name = "Propulsor", Description = "Deja una mina donde estabas que explota enseguida.",
-				Style = DashStyle.Propulsor, Charges = 2, Distance = 120f, Recharge = 2f,
+				Style = DashStyle.Propulsor, Charges = 2, Distance = 120f, Recharge = 5f,
 				Color = new Color(1f, 0.5f, 0.3f),
 			},
 			Affinities = {
@@ -200,7 +200,7 @@ public static class CharacterLibrary
 			},
 		},
 		new CharacterData {
-			Name = "El Becario", Description = "Vive de la suerte... y de la beca.",
+			Name = "Memo", Description = "Vive de la suerte... y de la beca.",
 			Archetype = "Afortunado",
 			ScenePath = CimarronScene, IconPath = CimarronIcon, IsPlaceholder = true,
 			Tint = new Color(0.65f, 1f, 0.65f),
@@ -208,7 +208,7 @@ public static class CharacterLibrary
 			ExtraStats = s => { s.Luck += 1f; s.GoldMultiplier += 0.20f; }, ExtraStatsText = "Suerte +1 · Monedas +20%",
 			Dash = new DashProfile {
 				Name = "Golpe de suerte", Description = "35% de probabilidad de no gastar la carga.",
-				Style = DashStyle.GolpeDeSuerte, Charges = 2, Distance = 120f, Recharge = 1.6f,
+				Style = DashStyle.GolpeDeSuerte, Charges = 2, Distance = 120f, Recharge = 2.5f,
 				Color = new Color(1f, 0.85f, 0.3f),
 			},
 			Affinities = {
@@ -216,7 +216,7 @@ public static class CharacterLibrary
 			},
 		},
 		new CharacterData {
-			Name = "La Doctora", Description = "Primero cura, luego pregunta.",
+			Name = "PROVISIONAL", Description = "PROVISIONAL",
 			Archetype = "Sanadora",
 			ScenePath = CimarronScene, IconPath = CimarronIcon, IsPlaceholder = true,
 			Tint = new Color(0.7f, 1f, 0.95f),
@@ -224,7 +224,7 @@ public static class CharacterLibrary
 			ExtraStats = s => { s.HpRegen += 1f; s.LifeSteal += 0.02f; }, ExtraStatsText = "Regen +1/s · Robo de vida 2%",
 			Dash = new DashProfile {
 				Name = "Paso vital", Description = "Al terminar te curas 4% de tu vida máxima.",
-				Style = DashStyle.PasoVital, Charges = 2, Distance = 115f, Recharge = 2f,
+				Style = DashStyle.PasoVital, Charges = 2, Distance = 115f, Recharge = 4f,
 				Color = new Color(0.45f, 1f, 0.55f),
 			},
 			Affinities = {
@@ -233,7 +233,7 @@ public static class CharacterLibrary
 			},
 		},
 		new CharacterData {
-			Name = "El Químico", Description = "Sus experimentos rara vez salen como espera.",
+			Name = "PROVISIONAL", Description = "PROVISIONAL",
 			Archetype = "Alquimista de área",
 			ScenePath = CimarronScene, IconPath = CimarronIcon, IsPlaceholder = true,
 			Tint = new Color(0.75f, 1f, 0.45f),
@@ -241,7 +241,7 @@ public static class CharacterLibrary
 			ExtraStats = s => s.SizeMultiplier += 0.05f, ExtraStatsText = "Tamaño +5%",
 			Dash = new DashProfile {
 				Name = "Estela tóxica", Description = "Deja charcos tóxicos que dañan y ralentizan.",
-				Style = DashStyle.EstelaToxica, Charges = 2, Distance = 120f, Recharge = 1.8f,
+				Style = DashStyle.EstelaToxica, Charges = 2, Distance = 120f, Recharge = 4f,
 				Color = new Color(0.5f, 1f, 0.35f),
 			},
 			Affinities = {

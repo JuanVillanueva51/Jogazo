@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://c2ciuiiqmsull" path="res://scenes/enemies/wormBoss.tscn" id="34_2m0s8"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/chest.tscn" id="90_chest"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/shop_terminal.tscn" id="91_shop"]
+[ext_resource type="Script" path="res://scripts/managers/MapBounds.cs" id="92_bounds"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_75rvs"]
 texture = ExtResource("1_qh5pf")
@@ -15379,3 +15380,7 @@ Tier = 4
 
 [node name="Tienda" parent="Botin" instance=ExtResource("91_shop")]
 position = Vector2(65, 33)
+
+[node name="LimitesMapa" type="Node2D" parent="."]
+script = ExtResource("92_bounds")
+CameraLimits = Rect2(-1526, -953, 3569, 2268)

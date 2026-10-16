@@ -25,7 +25,7 @@ Todas (menos Esc) se pueden cambiar en **Configuración → Controles**.
 
    ```csharp
    Stat("mi_objeto", "Mi Objeto", "+5% de daño por copia.",
-       ItemRarity.Comun, false, (s, n) => s.DamageMultiplier += 0.05f * n),
+	   ItemRarity.Comun, false, (s, n) => s.DamageMultiplier += 0.05f * n),
    ```
 
 2. Si necesita lógica, crea una clase que herede de `ItemEffect` en `ItemEffects.cs` y sobrescribe el gancho que necesites: `OnEnemyHit`, `OnEnemyKilled`, `OnProcess`, `ModifyIncomingDamage`, `TryPreventDeath` o, para un activo, `Activate`. Después regístrala en `ItemLibrary.cs` con `CreateEffect = () => new MiEfecto()`.
@@ -74,8 +74,22 @@ Todas (menos Esc) se pueden cambiar en **Configuración → Controles**.
 ## Balance (`scripts/balance/Balance.cs`)
 
 - **Dificultad** al estilo de Risk of Rain 2: un coeficiente que crece con el tiempo total de la partida (×1.25 por cada mapa superado) y que define el nivel de los enemigos.
-  - Por cada nivel, los enemigos ganan +30% de vida y +20% de daño.
-  - El nivel enemigo actual aparece en el HUD.
+  - Por cada nivel, los enemigos ganan +33% de vida y +20% de daño.
+  - El nivel enemigo y la dificultad aparecen en el HUD.
+  - **Niveles de dificultad** (Configuración → Juego, se aplican a partidas nuevas; `Balance.Difficulties`):
+
+	| Dificultad | Crecimiento por tiempo | Vida enemiga | Daño enemigo | Aparición | Élites | Créditos |
+	|---|---|---|---|---|---|---|
+	| Normal | 3.0 | ×1 | ×1 | ×1 | +0% | ×1 |
+	| Difícil | 3.6 | ×1.15 | ×1.25 | ×1.2 | +3% | ×1.25 |
+	| Pesadilla | 4.5 | ×1.3 | ×1.5 | ×1.4 | +6% | ×1.5 |
+
+- **Enemigos** (más peligrosos que antes):
+  - Velocidad y daño base por tipo en cada escena de `scenes/enemies/` (antes todos caminaban a 30 px/s y no alcanzaban al jugador). Rápidos: lobo 90, murciélago 85, vampiro 80. Lentos y fuertes: caballero 55, guardián 50.
+  - Golpe de contacto cada 1 s (antes 3 s): `Balance.EnemyContactCooldown`.
+  - Aparecen justo fuera de la pantalla, en grupos que crecen con el tiempo (`ExtraSpawnChance`), 35% más seguido (`SpawnRateMultiplier`) y con oleadas cada 2 minutos (el HUD avisa con "¡OLEADA!").
+  - Élites desde 5% (+0.8% por minuto, máx. 30%); 15% de enemigos a distancia.
+  - **Los enemigos no chocan con muros** (solo entre ellos, capa 2): así no se quedan atorados. Si un élite o jefe muere detrás de un muro, su cofre aparece del lado del jugador.
 - **Jefes**: vida × (1 + coeficiente).
 - **Élites**: ×3.5 de vida, ×1.5 de daño, ×3 de experiencia y monedas.
 - **Daño del jugador**: lo calcula un solo módulo, `DamageCalculator`, para todas las armas, incluidas las orbitales. El antiguo `DamageMultiplier = 6` se sustituyó por `PlayerDamageScale = 3`, compensado con enemigos que escalan menos al inicio de cada mapa.
@@ -163,4 +177,12 @@ Las armas nuevas implementan `IWeaponSpawn`: `WeaponManager` les entrega en `Lau
   - **Audio**: volumen general, música y efectos (se crean los buses `Musica` y `Efectos`; los reproductores nuevos se asignan solos), silenciar.
   - **Video**: ventana / pantalla completa sin bordes / pantalla completa exclusiva, tamaño de ventana, límite de FPS y VSync.
   - **Controles**: cambiar la tecla de cada acción (si otra acción ya la usaba, intercambian teclas) y restaurar.
-  - **Juego**: cargas de dash bajo el personaje, avisos de objetos, nivel enemigo y FPS.
+  - **Juego**: dificultad (Normal, Difícil, Pesadilla), cargas de dash bajo el personaje, avisos de objetos, nivel enemigo y FPS.
+
+## Límites de los mapas (`scripts/managers/MapBounds.cs`)
+
+Cada mapa tiene un nodo **LimitesMapa** con un rectángulo `CameraLimits` (se ve en azul en el editor). Al empezar, la cámara del jugador queda limitada a ese rectángulo: ya no se ve el espacio oscuro fuera del mapa.
+
+- Los muros invisibles siguen siendo `StaticBody2D` (capas 1 y 3). En el tutorial se acercaron un poco al borde pintado para que el personaje no quede pegado al borde de la pantalla. En el mapa 2 se agregó `LimitesMapa/MuroDerecho`, que cierra un hueco arriba a la derecha por donde se podía salir del mapa.
+- Si cambias el tamaño de un mapa, ajusta `CameraLimits` para que cubra solo el área pintada.
+- Los enemigos aparecen dentro de este rectángulo, justo fuera de la pantalla.

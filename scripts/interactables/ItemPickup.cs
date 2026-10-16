@@ -40,6 +40,8 @@ public partial class ItemPickup : Area2D
 		CollisionLayer = 0;
 		CollisionMask = 1;
 		Monitorable = false;
+		// Que nunca caiga dentro o detrás de un muro
+		_launchTo = World.ReachablePoint(_launchFrom, _launchTo, 14f);
 
 		var shape = new CollisionShape2D { Shape = new CircleShape2D { Radius = 12f } };
 		AddChild(shape);

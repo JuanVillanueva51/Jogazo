@@ -28,6 +28,7 @@
 [ext_resource type="Resource" uid="uid://rgq01t5833gi" path="res://scenes/enemies/SpawnData/skeleton_Enemy.tres" id="24_x68re"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/chest.tscn" id="90_chest"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/shop_terminal.tscn" id="91_shop"]
+[ext_resource type="Script" path="res://scripts/managers/MapBounds.cs" id="92_bounds"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pivcp"]
 texture = ExtResource("1_m8qqq")
@@ -7764,6 +7765,9 @@ size = Vector2(1168, 232)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l30aj"]
 size = Vector2(351, 226)
 
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_muro_der"]
+size = Vector2(60, 1940)
 [node name="Forest_Map2" type="Node2D" unique_id=1069341475]
 position = Vector2(0, -1)
 
@@ -7963,3 +7967,15 @@ Tier = 4
 
 [node name="Tienda" parent="Botin" instance=ExtResource("91_shop")]
 position = Vector2(25, -45)
+
+[node name="LimitesMapa" type="Node2D" parent="."]
+script = ExtResource("92_bounds")
+CameraLimits = Rect2(-1216, -592, 2544, 1904)
+
+[node name="MuroDerecho" type="StaticBody2D" parent="LimitesMapa"]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitesMapa/MuroDerecho"]
+position = Vector2(1330, 361)
+shape = SubResource("RectangleShape2D_muro_der")

@@ -7,7 +7,7 @@ using Godot;
 ///  - Audio: volumen general, música y efectos (crea los buses "Musica" y "Efectos").
 ///  - Video: modo de ventana, resolución, VSync, límite de FPS.
 ///  - Controles: tecla principal de cada acción (las teclas secundarias, como flechas, se conservan).
-///  - Juego: opciones de interfaz (cargas de dash, avisos de objetos, FPS, nivel enemigo).
+///  - Juego: dificultad de las partidas nuevas y opciones de interfaz (cargas de dash, avisos, FPS, nivel enemigo).
 /// </summary>
 public partial class SettingsManager : Node
 {
@@ -47,6 +47,8 @@ public partial class SettingsManager : Node
 	public bool ShowItemToasts  { get; private set; } = true;
 	public bool ShowFps         { get; private set; }
 	public bool ShowEnemyLevel  { get; private set; } = true;
+	/// <summary>Dificultad de las partidas nuevas (índice de Balance.Difficulties).</summary>
+	public int  DifficultyIndex { get; private set; } = 0;
 
 	/// <summary>Se dispara cuando cambia cualquier opción.</summary>
 	public event Action Changed;
@@ -201,6 +203,7 @@ public partial class SettingsManager : Node
 	public void SetShowItemToasts(bool v) { ShowItemToasts = v; SaveAndNotify(); }
 	public void SetShowFps(bool v)        { ShowFps = v; SaveAndNotify(); }
 	public void SetShowEnemyLevel(bool v) { ShowEnemyLevel = v; SaveAndNotify(); }
+	public void SetDifficulty(int index)  { DifficultyIndex = Mathf.Clamp(index, 0, Balance.Difficulties.Length - 1); SaveAndNotify(); }
 
 	// ───────────────────────── Controles ─────────────────────────
 
@@ -312,6 +315,7 @@ public partial class SettingsManager : Node
 		MasterVolume = 1f; MusicVolume = 0.8f; SfxVolume = 0.8f; Muted = false;
 		VSync = true; FpsLimitIndex = 0;
 		ShowDashPips = true; ShowItemToasts = true; ShowFps = false; ShowEnemyLevel = true;
+		DifficultyIndex = 0;
 		foreach (var kv in _defaultKeys) ApplyKey(kv.Key, kv.Value);
 		ApplyAll();
 		SaveAndNotify();
@@ -348,6 +352,7 @@ public partial class SettingsManager : Node
 		ShowItemToasts = (bool)cfg.GetValue("game", "item_toasts", ShowItemToasts);
 		ShowFps        = (bool)cfg.GetValue("game", "show_fps", ShowFps);
 		ShowEnemyLevel = (bool)cfg.GetValue("game", "enemy_level", ShowEnemyLevel);
+		DifficultyIndex = Mathf.Clamp((int)cfg.GetValue("game", "difficulty", DifficultyIndex), 0, Balance.Difficulties.Length - 1);
 
 		foreach (string action in RebindableActions)
 		{
@@ -374,6 +379,7 @@ public partial class SettingsManager : Node
 		cfg.SetValue("game", "item_toasts", ShowItemToasts);
 		cfg.SetValue("game", "show_fps", ShowFps);
 		cfg.SetValue("game", "enemy_level", ShowEnemyLevel);
+		cfg.SetValue("game", "difficulty", DifficultyIndex);
 
 		foreach (string action in RebindableActions)
 			cfg.SetValue("controls", action, (long)GetKey(action));

@@ -64,9 +64,10 @@ radius = 10.049875
 
 [node name="SlimeEnemy" type="CharacterBody2D" unique_id=1012301627 groups=["enemies"]]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 2
 script = ExtResource("1_eto1c")
-Speed = 30.0
+Speed = 45.0
+Damage = 8.0
 ProjectileScene = ExtResource("2_syyus")
 ExpOrbScene = ExtResource("3_icv34")
 GoldCoinScene = ExtResource("4_fuxq2")

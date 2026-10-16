@@ -35,7 +35,10 @@ public partial class GameManager : Node
 	public PassiveType SelectedPassive        { get; set; } = PassiveType.None;
 	/// <summary>Modificador de dificultad elegido por el jugador (torres). Acelera el escalado por tiempo.</summary>
 	public float diffModifier = 1f;
-	public float eliteProbability = 0.03f;
+	public float eliteProbability = Balance.BaseEliteProbability;
+	/// <summary>Dificultad de la partida actual (se toma de Configuración al empezar una partida nueva).</summary>
+	public int DifficultyIndex { get; private set; } = 0;
+	public DifficultyPreset Difficulty => Balance.GetDifficulty(DifficultyIndex);
 	public int currentMapLevel {get; set; } = 0;
 	public bool isBossSpawned {get; set; } = false;
 	public bool isBossDefeated {get; set;} = false;
@@ -52,13 +55,14 @@ public partial class GameManager : Node
 	public bool IsModalOpen { get; set; }
 
 	private float _coinRemainder;
+	private float _creditRemainder;
 	private float _creditMinuteTimer;
 
 	// ───────────────────────── Dificultad ─────────────────────────
-	public float DifficultyCoefficient => Balance.Coefficient(TotalRunTime, Mathf.Max(0, currentMapLevel - 1), diffModifier);
+	public float DifficultyCoefficient => Balance.Coefficient(TotalRunTime, Mathf.Max(0, currentMapLevel - 1), diffModifier, Difficulty.ScalingValue);
 	public float EnemyLevel => Balance.EnemyLevel(DifficultyCoefficient);
 	public float CostScale => Balance.CostScale(DifficultyCoefficient);
-	public float CurrentEliteChance => Balance.EliteChance(eliteProbability, TotalRunTime);
+	public float CurrentEliteChance => Mathf.Min(Balance.EliteChance(eliteProbability, TotalRunTime) + Difficulty.EliteBonus, 0.5f);
 
 	public override void _EnterTree() => Instance = this;
 
@@ -170,8 +174,13 @@ public partial class GameManager : Node
 	public void AwardCredits(int amount)
 	{
 		if (amount <= 0) return;
-		Run.CreditsEarned += amount;
-		ProfileManager.Instance?.AddCredits(amount);
+		// Las dificultades altas dan más Créditos (se guarda el residuo para no perder fracciones)
+		float total = amount * Difficulty.CreditMultiplier + _creditRemainder;
+		int whole = Mathf.FloorToInt(total);
+		_creditRemainder = total - whole;
+		if (whole <= 0) return;
+		Run.CreditsEarned += whole;
+		ProfileManager.Instance?.AddCredits(whole);
 	}
 
 	private void OnEnemyKilled(KillInfo kill)
@@ -197,6 +206,7 @@ public partial class GameManager : Node
 	public void StartNewRun()
 	{
 		ResetRun();
+		DifficultyIndex = SettingsManager.Instance != null ? SettingsManager.Instance.DifficultyIndex : 0;
 		Run = new RunStats { Active = true };
 	}
 
@@ -240,9 +250,10 @@ public partial class GameManager : Node
 		isBossDefeated = false;
 		currentMapLevel = 0;
 		diffModifier = 1f;
-		eliteProbability = 0.03f;
+		eliteProbability = Balance.BaseEliteProbability;
 		IsModalOpen = false;
 		_coinRemainder = 0f;
+		_creditRemainder = 0f;
 		_creditMinuteTimer = 0f;
 		//limpiar estado al reiniciar
 		SavedWeapons = null;

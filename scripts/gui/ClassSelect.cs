@@ -45,6 +45,16 @@ public partial class ClassSelect : Control
 			vbox.AddChild(_classWeaponLabel);
 			vbox.MoveChild(_classWeaponLabel, _playButton.GetIndex());
 		}
+		// Dificultad elegida en Configuración (se aplica a esta partida)
+		if (SettingsManager.Instance != null)
+		{
+			var preset = Balance.GetDifficulty(SettingsManager.Instance.DifficultyIndex);
+			var difficultyLabel = new Label { Name = "DifficultyLabel", Text = $"Dificultad: {preset.Name} (cámbiala en Configuración)", AutowrapMode = TextServer.AutowrapMode.WordSmart };
+			difficultyLabel.AddThemeFontSizeOverride("font_size", 11);
+			difficultyLabel.AddThemeColorOverride("font_color", new Color(1f, 0.6f, 0.55f));
+			vbox.AddChild(difficultyLabel);
+			vbox.MoveChild(difficultyLabel, _playButton.GetIndex());
+		}
 		_classArchetypeLabel = new Label { Name = "ClassArchetypeLabel", AutowrapMode = TextServer.AutowrapMode.WordSmart };
 		_classArchetypeLabel.AddThemeColorOverride("font_color", ArchetypeColor);
 		_classArchetypeLabel.AddThemeFontSizeOverride("font_size", 13);

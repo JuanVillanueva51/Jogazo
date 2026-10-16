@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://gatl4fo2hwuy" path="res://sprites/Armas/Yellow Effect Bullet Impact Explosion 32x32.png" id="2_3tt20"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1e3to"]
-radius = 25.019993
+radius = 38.013157
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnttc"]
 atlas = ExtResource("2_3tt20")
@@ -37,22 +37,25 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fb3qk")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
 [node name="FireWalker" type="Area2D" unique_id=1400645301]
+position = Vector2(-15, -14)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_3tt20")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=859697444]
+position = Vector2(-5, -11)
 shape = SubResource("CircleShape2D_1e3to")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=150729094]
 texture_filter = 1
-scale = Vector2(1.1107954, 0.9692755)
+position = Vector2(-4.19318, -11.160728)
+scale = Vector2(2.324574, 1.9340794)
 sprite_frames = SubResource("SpriteFrames_4w14w")
 autoplay = "default"
 frame_progress = 0.59314114

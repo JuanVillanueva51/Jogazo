@@ -40,6 +40,7 @@ public partial class Hud : CanvasLayer
 	private Label _activeStatusLabel;
 	private Label _creditsLabel;
 	private Label _difficultyLabel;
+	private Label _waveLabel;
 	private Label _toastLabel;
 	private Label _fpsLabel;
 	private float _toastTimer;
@@ -127,10 +128,18 @@ public partial class Hud : CanvasLayer
 		_timerLabel.OffsetBottom = 30f;
 
 		_difficultyLabel = UiFactory.MakeLabel("", 11, new Color(1f, 0.7f, 0.6f));
-		_difficultyLabel.Position = new Vector2(screen.X * 0.5f - 100f, 30f);
-		_difficultyLabel.Size = new Vector2(200f, 14f);
+		_difficultyLabel.Position = new Vector2(screen.X * 0.5f - 140f, 30f);
+		_difficultyLabel.Size = new Vector2(280f, 14f);
 		_difficultyLabel.HorizontalAlignment = HorizontalAlignment.Center;
 		AddChild(_difficultyLabel);
+
+		// Aviso de oleada (EnemySpawner.WaveActive)
+		_waveLabel = UiFactory.MakeLabel("¡OLEADA!", 16, UiFactory.ErrorColor);
+		_waveLabel.Position = new Vector2(screen.X * 0.5f - 100f, 44f);
+		_waveLabel.Size = new Vector2(200f, 20f);
+		_waveLabel.HorizontalAlignment = HorizontalAlignment.Center;
+		_waveLabel.Visible = false;
+		AddChild(_waveLabel);
 
 		BuildCoinPanel(screen);
 		BuildXpBar(screen);
@@ -303,7 +312,16 @@ public partial class Hud : CanvasLayer
 		_timerLabel.Text = $"{seconds / 60:D2}:{seconds % 60:D2}";
 
 		bool showLevel = settings == null || settings.ShowEnemyLevel;
-		_difficultyLabel.Text = showLevel && gm.currentMapLevel > 0 ? $"Nivel enemigo {gm.EnemyLevel:0.0}" : "";
+		_difficultyLabel.Text = showLevel && gm.currentMapLevel > 0 ? $"Nivel enemigo {gm.EnemyLevel:0.0} · {gm.Difficulty.Name}" : "";
+
+		bool wave = EnemySpawner.WaveActive && gm.currentMapLevel > 0;
+		_waveLabel.Visible = wave;
+		if (wave)
+		{
+			var wm = _waveLabel.Modulate;
+			wm.A = 0.55f + 0.45f * Mathf.Sin(Time.GetTicksMsec() / 140f);
+			_waveLabel.Modulate = wm;
+		}
 
 		int total = ProfileManager.Instance != null ? ProfileManager.Instance.Credits : 0;
 		_creditsLabel.Text = $"{Balance.MetaCurrencyName}: {total}  (+{gm.Run.CreditsEarned})";

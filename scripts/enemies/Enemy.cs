@@ -6,7 +6,13 @@ public partial class Enemy : CharacterBody2D, IEnemy
 	[Export] public float MaxHp = 30f; //30
 	[Export] public float Damage = 10f; //10
 	[Export] public float Speed = 60f; //60
-	[Export] public float DamageCooldown = 3f; //3
+	[Export] public float DamageCooldown = Balance.EnemyContactCooldown; //antes 3 s
+
+	/// <summary>
+	/// Capa física de los enemigos. Solo chocan entre ellos: los muros (capas 1 y 3) no los detienen,
+	/// así nunca se quedan atorados detrás de un muro o fuera del mapa.
+	/// </summary>
+	public const uint EnemyPhysicsLayer = 2;
 	[Export] public float XpValue = 10f; //10
 
 	//Drops
@@ -36,6 +42,7 @@ public partial class Enemy : CharacterBody2D, IEnemy
 	public override void _Ready()
 	{
 		_currentHp = MaxHp;
+		CollisionMask = EnemyPhysicsLayer;
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_player = GetTree().GetFirstNodeInGroup("player") as Player;
 		_baseModulate = Modulate;
@@ -73,7 +80,7 @@ public partial class Enemy : CharacterBody2D, IEnemy
 		MoveAndSlide();
 
 		float distanceToPlayer = GlobalPosition.DistanceTo(_player.GlobalPosition);
-		if (distanceToPlayer < 25f && _damageCooldownTimer <= 0f && _slowStrength < 1f)
+		if (distanceToPlayer < Balance.EnemyContactRange * Mathf.Max(1f, Scale.X * 0.75f) && _damageCooldownTimer <= 0f && _slowStrength < 1f)
 		{
 			_player.TakeDamageFrom(Damage, this);
 			_damageCooldownTimer = DamageCooldown;

@@ -78,7 +78,8 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_thepo")
 MaxHp = 450.0
-Speed = 30.0
+Speed = 50.0
+Damage = 22.0
 ExpOrbScene = ExtResource("2_r3r7a")
 GoldCoinScene = ExtResource("3_he0i0")
 
