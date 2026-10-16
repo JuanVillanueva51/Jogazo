@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://b1hd7d1tf0x26"]
+
+[ext_resource type="Script" uid="uid://lk8f4eju3my3" path="res://scripts/enemies/Enemy.cs" id="1_g1eps"]
+[ext_resource type="PackedScene" uid="uid://c0seyw7pihuba" path="res://scenes/currency/experience/exp_orb.tscn" id="2_dp6w4"]
+[ext_resource type="PackedScene" uid="uid://uu1yk1dr4okj" path="res://scenes/currency/coins/gold_coin.tscn" id="3_16i6k"]
+[ext_resource type="Texture2D" uid="uid://bvyeihgm5joqr" path="res://sprites/Enemigos/Canine_Black_Run.png" id="4_l7xny"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_038oa"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd10i"]
+atlas = ExtResource("4_l7xny")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrget"]
+atlas = ExtResource("4_l7xny")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei744"]
+atlas = ExtResource("4_l7xny")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85kwl"]
+atlas = ExtResource("4_l7xny")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bcvj"]
+atlas = ExtResource("4_l7xny")
+region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jn0h"]
+atlas = ExtResource("4_l7xny")
+region = Rect2(48, 32, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5rktd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd10i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrget")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei744")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85kwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bcvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jn0h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Wolf" type="CharacterBody2D" unique_id=235264232]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_g1eps")
+MaxHp = 450.0
+Speed = 30.0
+ExpOrbScene = ExtResource("2_dp6w4")
+GoldCoinScene = ExtResource("3_16i6k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1228596203]
+shape = SubResource("CircleShape2D_038oa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1075256273]
+position = Vector2(-2, -3)
+scale = Vector2(0.7708333, 0.6875)
+sprite_frames = SubResource("SpriteFrames_5rktd")
+autoplay = "default"
+frame_progress = 0.93346936

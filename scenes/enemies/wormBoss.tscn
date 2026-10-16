@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://c2ciuiiqmsull"]
+
+[ext_resource type="Script" uid="uid://bc75gqjlwopvl" path="res://BossEnemy.cs" id="1_lluwy"]
+[ext_resource type="PackedScene" uid="uid://c0seyw7pihuba" path="res://scenes/currency/experience/exp_orb.tscn" id="2_muord"]
+[ext_resource type="PackedScene" uid="uid://uu1yk1dr4okj" path="res://scenes/currency/coins/gold_coin.tscn" id="3_h6p54"]
+[ext_resource type="Texture2D" uid="uid://e7nmlmx21rdo" path="res://sprites/Enemigos/Walk.png" id="4_lluwy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ian0n"]
+radius = 19.104973
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muord"]
+atlas = ExtResource("4_lluwy")
+region = Rect2(0, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6p54"]
+atlas = ExtResource("4_lluwy")
+region = Rect2(90, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8tpo"]
+atlas = ExtResource("4_lluwy")
+region = Rect2(180, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uhl1"]
+atlas = ExtResource("4_lluwy")
+region = Rect2(270, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qhbs"]
+atlas = ExtResource("4_lluwy")
+region = Rect2(360, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cky5"]
+atlas = ExtResource("4_lluwy")
+region = Rect2(450, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gevf"]
+atlas = ExtResource("4_lluwy")
+region = Rect2(540, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwaqi"]
+atlas = ExtResource("4_lluwy")
+region = Rect2(630, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfkjw"]
+atlas = ExtResource("4_lluwy")
+region = Rect2(720, 0, 90, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mp3yn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muord")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6p54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8tpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uhl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qhbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cky5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gevf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwaqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfkjw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="wormBoss" type="CharacterBody2D" unique_id=1561850603]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_lluwy")
+MaxHp = 8000.0
+Speed = 30.0
+ExpOrbScene = ExtResource("2_muord")
+GoldCoinScene = ExtResource("3_h6p54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=636373460]
+shape = SubResource("CircleShape2D_ian0n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1274778414]
+position = Vector2(-3.9999995, -8.000001)
+scale = Vector2(1.6444445, 1.6444445)
+sprite_frames = SubResource("SpriteFrames_mp3yn")
+autoplay = "default"
+frame_progress = 0.68831533

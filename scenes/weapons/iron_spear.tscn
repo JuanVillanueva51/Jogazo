@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://b5eytl4k0ngsq"]
+
+[ext_resource type="Script" uid="uid://da8wgnmjgy3o3" path="res://scripts/weapons/MeleeWeapon.cs" id="1_gkmeq"]
+[ext_resource type="Texture2D" uid="uid://ugr04qpwgyme" path="res://sprites/Armas/Stab.png" id="2_gkmeq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijack"]
+atlas = ExtResource("2_gkmeq")
+region = Rect2(0, 0, 704, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbu30"]
+atlas = ExtResource("2_gkmeq")
+region = Rect2(704, 0, 704, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fql7a"]
+atlas = ExtResource("2_gkmeq")
+region = Rect2(1408, 0, 704, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcupa"]
+atlas = ExtResource("2_gkmeq")
+region = Rect2(2112, 0, 704, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2g20"]
+atlas = ExtResource("2_gkmeq")
+region = Rect2(0, 768, 704, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2l8i"]
+atlas = ExtResource("2_gkmeq")
+region = Rect2(704, 768, 704, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijree"]
+atlas = ExtResource("2_gkmeq")
+region = Rect2(1408, 768, 704, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1frqg"]
+atlas = ExtResource("2_gkmeq")
+region = Rect2(2112, 768, 704, 768)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcupa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijack")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbu30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fql7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcupa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2g20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2l8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijree")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1frqg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7bmp"]
+radius = 8.999174
+height = 49.99541
+
+[node name="IronSpear" type="Area2D" unique_id=1878466939]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_gkmeq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1557385199]
+position = Vector2(-1, 0)
+scale = Vector2(0.07981334, 0.060680818)
+sprite_frames = SubResource("SpriteFrames_xcupa")
+autoplay = "default"
+frame_progress = 0.4317749
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=150481584]
+rotation = 1.5843465
+shape = SubResource("CapsuleShape2D_l7bmp")

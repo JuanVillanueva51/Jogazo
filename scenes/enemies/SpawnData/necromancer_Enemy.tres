@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" format=3 uid="uid://bgoigks1t7tgm"]
+
+[ext_resource type="Script" uid="uid://bgcvn4ehtm6nd" path="res://EnemySpawnData.cs" id="1_5g5ci"]
+[ext_resource type="PackedScene" uid="uid://cw3qluegfrc08" path="res://scenes/enemies/necromancer.tscn" id="1_fk061"]
+
+[resource]
+script = ExtResource("1_5g5ci")
+EnemyScene = ExtResource("1_fk061")
+mapLevel = 3
+metadata/_custom_type_script = "uid://bgcvn4ehtm6nd"

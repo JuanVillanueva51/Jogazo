@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://b5pyq8jfl4kr0"]
+
+[ext_resource type="Texture2D" uid="uid://doo8y65kmi4w0" path="res://sprites/Personajes/AnguianoAnim.png" id="1_1iinc"]
+[ext_resource type="Script" uid="uid://dhdxkt4hymkud" path="res://scripts/player/Player.cs" id="1_rw8dh"]
+[ext_resource type="Script" uid="uid://tw54rtej0h70" path="res://scripts/managers/WeaponManager.cs" id="2_rw8dh"]
+[ext_resource type="Script" uid="uid://gwkm1pdpvtbd" path="res://scripts/managers/XpManger.cs" id="4_kj8pg"]
+[ext_resource type="PackedScene" uid="uid://bkporllhh3hq4" path="res://scenes/ui/hud.tscn" id="5_umrhh"]
+[ext_resource type="PackedScene" uid="uid://cdu85o7oydgvl" path="res://scenes/ui/level_up_screen.tscn" id="6_tw2g2"]
+[ext_resource type="PackedScene" uid="uid://drwax6c8a75dr" path="res://scenes/ui/game_over_screen.tscn" id="7_tkis8"]
+[ext_resource type="PackedScene" uid="uid://bq5sfajxnrl7" path="res://scenes/ui/pause_screen.tscn" id="8_pkqly"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umrhh"]
+atlas = ExtResource("1_1iinc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tw2g2"]
+atlas = ExtResource("1_1iinc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkis8"]
+atlas = ExtResource("1_1iinc")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkqly"]
+atlas = ExtResource("1_1iinc")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ividf"]
+atlas = ExtResource("1_1iinc")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_841eb"]
+atlas = ExtResource("1_1iinc")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lbc8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umrhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tw2g2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkis8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkqly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ividf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_841eb")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_negcv"]
+radius = 6.0
+
+[node name="AnguianoChar" type="CharacterBody2D" unique_id=1336282546]
+collision_mask = 4
+script = ExtResource("1_rw8dh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1570939644]
+texture_filter = 1
+position = Vector2(-1, -6)
+sprite_frames = SubResource("SpriteFrames_lbc8l")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.52590436
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1984224860]
+shape = SubResource("CircleShape2D_negcv")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1293828360]
+zoom = Vector2(2, 2)
+
+[node name="WeaponManager" type="Node" parent="." unique_id=935618578]
+script = ExtResource("2_rw8dh")
+
+[node name="XpManger" type="Node" parent="." unique_id=1302557815]
+script = ExtResource("4_kj8pg")
+
+[node name="Hud" parent="." unique_id=263779862 instance=ExtResource("5_umrhh")]
+
+[node name="LevelUpScreen" parent="." unique_id=699232108 instance=ExtResource("6_tw2g2")]
+
+[node name="GameOverScreen" parent="." unique_id=565696738 instance=ExtResource("7_tkis8")]
+
+[node name="PauseScreen" parent="." unique_id=342732342 instance=ExtResource("8_pkqly")]
+process_mode = 3

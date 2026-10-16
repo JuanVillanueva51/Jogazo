@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://d4gdovgrkw2pa"]
+
+[ext_resource type="Script" uid="uid://lk8f4eju3my3" path="res://scripts/enemies/Enemy.cs" id="1_7qbqi"]
+[ext_resource type="PackedScene" uid="uid://c0seyw7pihuba" path="res://scenes/currency/experience/exp_orb.tscn" id="2_2spco"]
+[ext_resource type="PackedScene" uid="uid://uu1yk1dr4okj" path="res://scenes/currency/coins/gold_coin.tscn" id="3_s2k1i"]
+[ext_resource type="Texture2D" uid="uid://capwbow3slnwn" path="res://sprites/Enemigos/Bringer-of-Death-SpritSheet.png" id="4_2ocmg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_038oa"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa7a8"]
+atlas = ExtResource("4_2ocmg")
+region = Rect2(0, 93, 140, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ig8n"]
+atlas = ExtResource("4_2ocmg")
+region = Rect2(140, 93, 140, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o78uw"]
+atlas = ExtResource("4_2ocmg")
+region = Rect2(280, 93, 140, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8pte"]
+atlas = ExtResource("4_2ocmg")
+region = Rect2(420, 93, 140, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1eww"]
+atlas = ExtResource("4_2ocmg")
+region = Rect2(560, 93, 140, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83ebp"]
+atlas = ExtResource("4_2ocmg")
+region = Rect2(700, 93, 140, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w7eo"]
+atlas = ExtResource("4_2ocmg")
+region = Rect2(980, 93, 140, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x72gy"]
+atlas = ExtResource("4_2ocmg")
+region = Rect2(840, 93, 140, 93)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_skpqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa7a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ig8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o78uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8pte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1eww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83ebp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6w7eo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x72gy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DeathKnight" type="CharacterBody2D" unique_id=235264232]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_7qbqi")
+MaxHp = 450.0
+Speed = 30.0
+ExpOrbScene = ExtResource("2_2spco")
+GoldCoinScene = ExtResource("3_s2k1i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1228596203]
+shape = SubResource("CircleShape2D_038oa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=122334488]
+position = Vector2(-17.999985, -11)
+scale = Vector2(0.53225803, 0.5322581)
+sprite_frames = SubResource("SpriteFrames_skpqs")
+autoplay = "default"
+frame_progress = 0.48086697

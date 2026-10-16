@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://cf6b6nmjyafxq"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_in5fu"]
+script/source = "using Godot;
+using System;
+
+public partial class FrostWalker : ZoneWeapon
+{
+	private Player player;
+
+	public override void _Ready()
+	{
+		base._Ready();
+
+		player =
+			GetTree().GetFirstNodeInGroup(\"player\")
+			as Player;
+	}
+
+	public override void _Process(double delta)
+	{
+		if(player != null)
+			GlobalPosition = player.GlobalPosition;
+
+		base._Process(delta);
+	}
+}
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f2v5o"]
+load_path = "res://.godot/imported/FrostWalker.png-205eb64a2570c25e2e937c588ba5d5f8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cja27"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbj7t"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp431"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so2ve"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_582xl"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mswp"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck31w"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjnr4"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deotm"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cueqs"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr02m"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdykm"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(768, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oriah"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp7wa"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(256, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbeo4"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(512, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34l24"]
+atlas = SubResource("CompressedTexture2D_f2v5o")
+region = Rect2(768, 768, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dd38v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cja27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbj7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp431")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so2ve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_582xl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mswp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck31w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjnr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deotm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cueqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr02m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdykm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oriah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp7wa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbeo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34l24")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qlwcd"]
+radius = 42.047592
+
+[node name="FrostWalker" type="Area2D" unique_id=404462394]
+collision_layer = 7
+collision_mask = 7
+script = SubResource("CSharpScript_in5fu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1645271822]
+show_behind_parent = true
+position = Vector2(-3.999999, -14)
+scale = Vector2(0.40625, 0.43359375)
+sprite_frames = SubResource("SpriteFrames_dd38v")
+autoplay = "default"
+frame_progress = 0.14942147
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1383253235]
+position = Vector2(-3, -10)
+shape = SubResource("CircleShape2D_qlwcd")

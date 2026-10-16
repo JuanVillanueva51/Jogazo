@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cs7nlha8efqi3"]
+
+[ext_resource type="Texture2D" uid="uid://badtg6d6pgytl" path="res://sprites/tutorial/Ye_Oldy_Knight_Guy.png" id="1_it5pk"]
+[ext_resource type="Script" uid="uid://uk6d8jm4dnje" path="res://scripts/dialogosNPCs/DialogoNPC.cs" id="2_2iinh"]
+[ext_resource type="Texture2D" uid="uid://bcpniyuh4c2my" path="res://sprites/tutorial/Dialogo_caballero-removebg-preview.png" id="3_n0g0b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icamb"]
+atlas = ExtResource("1_it5pk")
+region = Rect2(35, 5, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erqcl"]
+atlas = ExtResource("1_it5pk")
+region = Rect2(50, 5, 15, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ke2ws"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icamb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erqcl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dnlsi"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rcewx"]
+radius = 28.0
+
+[node name="NPC_Knight" type="CharacterBody2D" unique_id=1060573854]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2120015743]
+position = Vector2(-4.75, 4.75)
+scale = Vector2(1.6333333, 1.5)
+sprite_frames = SubResource("SpriteFrames_ke2ws")
+autoplay = "default"
+frame_progress = 0.3499383
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=461537747]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_dnlsi")
+
+[node name="SpriteDialogo" type="Sprite2D" parent="." unique_id=412614845]
+visible = false
+light_mask = 7
+visibility_layer = 15
+z_index = 10
+position = Vector2(-6.0000076, -52.999996)
+scale = Vector2(0.29172876, 0.3172043)
+texture = ExtResource("3_n0g0b")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1975773720]
+script = ExtResource("2_2iinh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1207209850]
+shape = SubResource("CircleShape2D_rcewx")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

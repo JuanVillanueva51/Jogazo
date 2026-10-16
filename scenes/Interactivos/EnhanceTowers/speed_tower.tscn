@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://kk1ywm2xjjmn"]
+
+[ext_resource type="Texture2D" uid="uid://bvl1l58y38eo7" path="res://sprites/Interactivos/EnhanceTowers/speedTower.png" id="1_n2ua7"]
+[ext_resource type="Texture2D" uid="uid://i80ts32cgkoc" path="res://sprites/GUI/Buttons/buttonNormal.png" id="2_olteh"]
+[ext_resource type="Texture2D" uid="uid://dvfq7m00me1kl" path="res://sprites/GUI/Buttons/buttonPressed.png" id="3_sye61"]
+[ext_resource type="Texture2D" uid="uid://d0rruxr6nvyml" path="res://sprites/GUI/Buttons/buttonHover.png" id="4_7wd2b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vbbf0"]
+radius = 38.470768
+
+[node name="SpeedTower" type="Area2D" unique_id=2099189950]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=96169723]
+shape = SubResource("CircleShape2D_vbbf0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1646103003]
+texture_filter = 1
+texture = ExtResource("1_n2ua7")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=524424789]
+texture_filter = 1
+anchors_preset = -1
+offset_left = -16.0
+offset_top = -47.0
+offset_right = 16.0
+offset_bottom = -31.0
+texture_normal = ExtResource("2_olteh")
+texture_pressed = ExtResource("3_sye61")
+texture_hover = ExtResource("4_7wd2b")
+ignore_texture_size = true
+stretch_mode = 0

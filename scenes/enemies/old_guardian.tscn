@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://dqxldd2piq2m8"]
+
+[ext_resource type="Script" uid="uid://lk8f4eju3my3" path="res://scripts/enemies/Enemy.cs" id="1_thepo"]
+[ext_resource type="PackedScene" uid="uid://c0seyw7pihuba" path="res://scenes/currency/experience/exp_orb.tscn" id="2_r3r7a"]
+[ext_resource type="PackedScene" uid="uid://uu1yk1dr4okj" path="res://scenes/currency/coins/gold_coin.tscn" id="3_he0i0"]
+[ext_resource type="Texture2D" uid="uid://ywxo50ep47eh" path="res://sprites/Enemigos/Old_Guardian_walk.png" id="4_68c24"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_038oa"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4o44u"]
+atlas = ExtResource("4_68c24")
+region = Rect2(0, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imyi0"]
+atlas = ExtResource("4_68c24")
+region = Rect2(0, 120, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paavr"]
+atlas = ExtResource("4_68c24")
+region = Rect2(0, 240, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrl4u"]
+atlas = ExtResource("4_68c24")
+region = Rect2(0, 360, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4tom"]
+atlas = ExtResource("4_68c24")
+region = Rect2(0, 480, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xnke"]
+atlas = ExtResource("4_68c24")
+region = Rect2(0, 600, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duqyx"]
+atlas = ExtResource("4_68c24")
+region = Rect2(0, 720, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc72t"]
+atlas = ExtResource("4_68c24")
+region = Rect2(0, 840, 120, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1rehk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4o44u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imyi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paavr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrl4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4tom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xnke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duqyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc72t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="OldGuardian" type="CharacterBody2D" unique_id=235264232]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_thepo")
+MaxHp = 450.0
+Speed = 30.0
+ExpOrbScene = ExtResource("2_r3r7a")
+GoldCoinScene = ExtResource("3_he0i0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1228596203]
+shape = SubResource("CircleShape2D_038oa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1723573745]
+position = Vector2(-1.9999962, -2.0000038)
+scale = Vector2(0.46666667, 0.46666667)
+sprite_frames = SubResource("SpriteFrames_1rehk")
+autoplay = "default"
+frame_progress = 0.47836214

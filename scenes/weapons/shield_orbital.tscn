@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ddanpqgpoi85i"]
+
+[ext_resource type="Script" uid="uid://dmg3e4vgiogdu" path="res://scripts/weapons/ShieldOrbital.cs" id="1_b702l"]
+[ext_resource type="Texture2D" uid="uid://dcr7vg47scyry" path="res://sprites/Armas/shield.png" id="2_b702l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tfl4w"]
+radius = 4.0
+
+[node name="ShieldOrbital" type="Area2D" unique_id=1283062989]
+script = ExtResource("1_b702l")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=195098266]
+position = Vector2(-5.9604645e-08, 1)
+scale = Vector2(0.011506927, 0.015143714)
+texture = ExtResource("2_b702l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1473680920]
+shape = SubResource("CircleShape2D_tfl4w")

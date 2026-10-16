@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/interactables/Chest.cs" id="1_chest"]
+[ext_resource type="Texture2D" path="res://sprites/sprites3erNivel/doors_lever_chest_animation.png" id="2_atlas"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_closed"]
+atlas = ExtResource("2_atlas")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_chest"]
+radius = 30.0
+
+[node name="Chest" type="Area2D"]
+z_index = 1
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_chest")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("AtlasTexture_closed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_chest")

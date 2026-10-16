@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://bvwgja7rrsi2h"]
+
+[ext_resource type="Script" uid="uid://lk8f4eju3my3" path="res://scripts/enemies/Enemy.cs" id="1_i6os3"]
+[ext_resource type="PackedScene" uid="uid://c0seyw7pihuba" path="res://scenes/currency/experience/exp_orb.tscn" id="2_18mee"]
+[ext_resource type="PackedScene" uid="uid://uu1yk1dr4okj" path="res://scenes/currency/coins/gold_coin.tscn" id="3_jofwc"]
+[ext_resource type="Texture2D" uid="uid://c6f586h0tnwm1" path="res://sprites/Enemigos/Bat-Run.png" id="4_ss5yy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_038oa"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0cyw"]
+atlas = ExtResource("4_ss5yy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0x8h"]
+atlas = ExtResource("4_ss5yy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5s8h"]
+atlas = ExtResource("4_ss5yy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ahko"]
+atlas = ExtResource("4_ss5yy")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu8he"]
+atlas = ExtResource("4_ss5yy")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8sw5"]
+atlas = ExtResource("4_ss5yy")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kibxx"]
+atlas = ExtResource("4_ss5yy")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvgh7"]
+atlas = ExtResource("4_ss5yy")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kk4wg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0cyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0x8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5s8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ahko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu8he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8sw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kibxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvgh7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Bat" type="CharacterBody2D" unique_id=235264232]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_i6os3")
+MaxHp = 35.0
+Speed = 30.0
+ExpOrbScene = ExtResource("2_18mee")
+GoldCoinScene = ExtResource("3_jofwc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1228596203]
+shape = SubResource("CircleShape2D_038oa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=768683771]
+position = Vector2(0, -2)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_kk4wg")
+autoplay = "default"
+frame_progress = 0.124121815

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" format=3 uid="uid://1ddjj114toq2"]
+
+[ext_resource type="PackedScene" uid="uid://dqxldd2piq2m8" path="res://scenes/enemies/old_guardian.tscn" id="1_4gr1g"]
+[ext_resource type="Script" uid="uid://bgcvn4ehtm6nd" path="res://EnemySpawnData.cs" id="1_qkvmt"]
+
+[resource]
+script = ExtResource("1_qkvmt")
+EnemyScene = ExtResource("1_4gr1g")
+mapLevel = 3
+MinSpawnTimeSeconds = 360.0
+metadata/_custom_type_script = "uid://bgcvn4ehtm6nd"

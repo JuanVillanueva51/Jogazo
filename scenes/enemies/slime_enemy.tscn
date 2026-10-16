@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://chto80ec0cval"]
+
+[ext_resource type="Texture2D" uid="uid://cm8t1bek668lv" path="res://sprites/Enemigos/slime_anim.png" id="1_2ti24"]
+[ext_resource type="Script" uid="uid://biph72tfhhida" path="res://scripts/enemies/RangedEnemy.cs" id="1_eto1c"]
+[ext_resource type="PackedScene" uid="uid://bhwha5p7t3st5" path="res://scenes/weapons/slime_thorn_weapon.tscn" id="2_syyus"]
+[ext_resource type="PackedScene" uid="uid://c0seyw7pihuba" path="res://scenes/currency/experience/exp_orb.tscn" id="3_icv34"]
+[ext_resource type="PackedScene" uid="uid://uu1yk1dr4okj" path="res://scenes/currency/coins/gold_coin.tscn" id="4_fuxq2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eto1c"]
+atlas = ExtResource("1_2ti24")
+region = Rect2(0, 0, 34, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syyus"]
+atlas = ExtResource("1_2ti24")
+region = Rect2(35, 0, 34, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wnfq"]
+atlas = ExtResource("1_2ti24")
+region = Rect2(69, 0, 34, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icv34"]
+atlas = ExtResource("1_2ti24")
+region = Rect2(105, 0, 34, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fuxq2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eto1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syyus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wnfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icv34")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eto1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syyus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wnfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icv34")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mwu22"]
+radius = 10.049875
+
+[node name="SlimeEnemy" type="CharacterBody2D" unique_id=1012301627 groups=["enemies"]]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_eto1c")
+Speed = 30.0
+ProjectileScene = ExtResource("2_syyus")
+ExpOrbScene = ExtResource("3_icv34")
+GoldCoinScene = ExtResource("4_fuxq2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1156683320]
+texture_filter = 1
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_fuxq2")
+animation = &"idle"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=481586707]
+shape = SubResource("CircleShape2D_mwu22")

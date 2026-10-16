@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dju0butlhqlj2"]
+
+[ext_resource type="Texture2D" uid="uid://3l6y52hqkekh" path="res://sprites/GUI/TitleAnim.png" id="1_6vgqs"]
+[ext_resource type="Texture2D" uid="uid://iamvlyc315nx" path="res://sprites/GUI/TitleAnim1.png" id="2_e71fn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3a25k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crgk3"]
+atlas = ExtResource("1_6vgqs")
+region = Rect2(0, 0, 130, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58woa"]
+atlas = ExtResource("2_e71fn")
+region = Rect2(0, 0, 130, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eh1nv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crgk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58woa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="TitleAnim" type="CharacterBody2D" unique_id=414950812]
+position = Vector2(552, 281)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=916179987]
+position = Vector2(-4.499939, -74)
+shape = SubResource("CircleShape2D_3a25k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=402664991]
+texture_filter = 1
+position = Vector2(0.5001221, 8.0000305)
+scale = Vector2(5.700001, 5.7)
+sprite_frames = SubResource("SpriteFrames_eh1nv")
+autoplay = "default"
+frame_progress = 0.34013364

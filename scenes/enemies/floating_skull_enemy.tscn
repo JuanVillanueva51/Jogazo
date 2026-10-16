@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://chqqw67o1uik2"]
+
+[ext_resource type="Script" uid="uid://lk8f4eju3my3" path="res://scripts/enemies/Enemy.cs" id="1_38ino"]
+[ext_resource type="PackedScene" uid="uid://c0seyw7pihuba" path="res://scenes/currency/experience/exp_orb.tscn" id="2_5atup"]
+[ext_resource type="Texture2D" uid="uid://bgnbswb7n8x1i" path="res://sprites/Enemigos/skullanim_idle.png" id="2_fcftc"]
+[ext_resource type="PackedScene" uid="uid://uu1yk1dr4okj" path="res://scenes/currency/coins/gold_coin.tscn" id="3_gpuif"]
+[ext_resource type="Texture2D" uid="uid://h5nggjii1wyo" path="res://sprites/Enemigos/skullanim_up_left_right.png" id="3_lu5c6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ydva"]
+atlas = ExtResource("2_fcftc")
+region = Rect2(0, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoo05"]
+atlas = ExtResource("2_fcftc")
+region = Rect2(33, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qxb3"]
+atlas = ExtResource("2_fcftc")
+region = Rect2(66, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvlpm"]
+atlas = ExtResource("3_lu5c6")
+region = Rect2(0, 33, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijlxo"]
+atlas = ExtResource("3_lu5c6")
+region = Rect2(33, 33, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o21vr"]
+atlas = ExtResource("3_lu5c6")
+region = Rect2(66, 33, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6jxe"]
+atlas = ExtResource("3_lu5c6")
+region = Rect2(66, 66, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqe02"]
+atlas = ExtResource("3_lu5c6")
+region = Rect2(33, 66, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke71q"]
+atlas = ExtResource("3_lu5c6")
+region = Rect2(0, 66, 33, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_msvjk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ydva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoo05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qxb3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvlpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijlxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o21vr")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6jxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqe02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke71q")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2aby3"]
+
+[node name="FloatingSkullEnemy" type="CharacterBody2D" unique_id=2102457384]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_38ino")
+MaxHp = 180.0
+Speed = 30.0
+ExpOrbScene = ExtResource("2_5atup")
+GoldCoinScene = ExtResource("3_gpuif")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1834419406]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_msvjk")
+animation = &"left"
+autoplay = "right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2112409482]
+shape = SubResource("CircleShape2D_2aby3")

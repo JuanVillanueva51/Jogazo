@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cjepir5olwacd"]
+
+[ext_resource type="Texture2D" uid="uid://bmkljwyigupxh" path="res://sprites/Interactivos/EnhanceTowers/lifeTower.png" id="1_cuxe7"]
+[ext_resource type="Texture2D" uid="uid://i80ts32cgkoc" path="res://sprites/GUI/Buttons/buttonNormal.png" id="2_g1ma6"]
+[ext_resource type="Texture2D" uid="uid://dvfq7m00me1kl" path="res://sprites/GUI/Buttons/buttonPressed.png" id="3_yufdj"]
+[ext_resource type="Texture2D" uid="uid://d0rruxr6nvyml" path="res://sprites/GUI/Buttons/buttonHover.png" id="4_khsmv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k115i"]
+radius = 38.470768
+
+[node name="LifeTower" type="Area2D" unique_id=523235008]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2036374754]
+shape = SubResource("CircleShape2D_k115i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=685584143]
+texture_filter = 1
+texture = ExtResource("1_cuxe7")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1808993659]
+texture_filter = 1
+anchors_preset = -1
+offset_left = -16.0
+offset_top = -47.0
+offset_right = 16.0
+offset_bottom = -31.0
+texture_normal = ExtResource("2_g1ma6")
+texture_pressed = ExtResource("3_yufdj")
+texture_hover = ExtResource("4_khsmv")
+ignore_texture_size = true
+stretch_mode = 0

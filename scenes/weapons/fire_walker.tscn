@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://is523s2j2vet"]
+
+[ext_resource type="Script" uid="uid://dam5l1oatcjx0" path="res://scripts/weapons/FireWalker.cs" id="1_3tt20"]
+[ext_resource type="Texture2D" uid="uid://gatl4fo2hwuy" path="res://sprites/Armas/Yellow Effect Bullet Impact Explosion 32x32.png" id="2_3tt20"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1e3to"]
+radius = 25.019993
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnttc"]
+atlas = ExtResource("2_3tt20")
+region = Rect2(512, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e3to"]
+atlas = ExtResource("2_3tt20")
+region = Rect2(544, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sheli"]
+atlas = ExtResource("2_3tt20")
+region = Rect2(576, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb3qk"]
+atlas = ExtResource("2_3tt20")
+region = Rect2(608, 256, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4w14w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnttc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e3to")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sheli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb3qk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FireWalker" type="Area2D" unique_id=1400645301]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_3tt20")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=859697444]
+shape = SubResource("CircleShape2D_1e3to")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=150729094]
+texture_filter = 1
+scale = Vector2(1.1107954, 0.9692755)
+sprite_frames = SubResource("SpriteFrames_4w14w")
+autoplay = "default"
+frame_progress = 0.59314114

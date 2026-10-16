@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" format=3 uid="uid://n41apwvdo1g0"]
+
+[ext_resource type="PackedScene" uid="uid://clnbvx35xf66e" path="res://scenes/enemies/plant.tscn" id="1_2nhxo"]
+[ext_resource type="Script" uid="uid://bgcvn4ehtm6nd" path="res://EnemySpawnData.cs" id="1_bv3k1"]
+
+[resource]
+script = ExtResource("1_bv3k1")
+EnemyScene = ExtResource("1_2nhxo")
+metadata/_custom_type_script = "uid://bgcvn4ehtm6nd"

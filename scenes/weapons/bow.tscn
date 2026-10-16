@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ci5cmw3yukirk"]
+
+[ext_resource type="Script" uid="uid://betje8hbngl27" path="res://scripts/weapons/Bullet.cs" id="1_pevdf"]
+[ext_resource type="Texture2D" uid="uid://vq84lhtn6ul5" path="res://sprites/Armas/Bow.png" id="1_xdfa1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j1yim"]
+radius = 70.918915
+
+[node name="Bow" type="Area2D" unique_id=1318436998]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_pevdf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1749437181]
+position = Vector2(0, 1.1920929e-07)
+rotation = 1.5710152
+scale = Vector2(0.05640244, 0.056402434)
+texture = ExtResource("1_xdfa1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=141223997]
+position = Vector2(6.0000005, 0)
+rotation = 1.5710152
+scale = Vector2(0.056402445, 0.056402434)
+shape = SubResource("CircleShape2D_j1yim")

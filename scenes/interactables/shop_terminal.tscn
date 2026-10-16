@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/interactables/ShopTerminal.cs" id="1_shop"]
+[ext_resource type="Texture2D" path="res://sprites/Shop.png" id="2_shop"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shop"]
+radius = 40.0
+
+[node name="ShopTerminal" type="Area2D"]
+z_index = 1
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_shop")
+PromptOffsetY = -62.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -12)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_shop")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_shop")

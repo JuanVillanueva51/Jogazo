@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://yc3tl8ysc2y7"]
+
+[ext_resource type="Texture2D" uid="uid://d7ee46m6063o" path="res://sprites/Armas/revolverWeapon.png" id="1_1webk"]
+[ext_resource type="Script" uid="uid://betje8hbngl27" path="res://scripts/weapons/Bullet.cs" id="1_enyc7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_enyc7"]
+radius = 1.0
+
+[node name="RevolverWeapon" type="Area2D" unique_id=42648858]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_enyc7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=32989002]
+texture_filter = 1
+position = Vector2(-1.1920929e-07, 1.1920929e-07)
+scale = Vector2(0.5234375, 0.5234375)
+texture = ExtResource("1_1webk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=671225040]
+scale = Vector2(1.6, 1.6)
+shape = SubResource("CircleShape2D_enyc7")

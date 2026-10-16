@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://cb6u0h3phkpfi"]
+
+[ext_resource type="Script" uid="uid://dhdxkt4hymkud" path="res://scripts/player/Player.cs" id="1_ny6k7"]
+[ext_resource type="Texture2D" uid="uid://txn2npt1avpc" path="res://sprites/Personajes/cimarron_anim.png" id="2_ie6te"]
+[ext_resource type="Script" uid="uid://tw54rtej0h70" path="res://scripts/managers/WeaponManager.cs" id="3_v65j0"]
+[ext_resource type="Script" uid="uid://gwkm1pdpvtbd" path="res://scripts/managers/XpManger.cs" id="5_h1xl0"]
+[ext_resource type="PackedScene" uid="uid://bkporllhh3hq4" path="res://scenes/ui/hud.tscn" id="5_o3svh"]
+[ext_resource type="PackedScene" uid="uid://cdu85o7oydgvl" path="res://scenes/ui/level_up_screen.tscn" id="6_h1xl0"]
+[ext_resource type="PackedScene" uid="uid://drwax6c8a75dr" path="res://scenes/ui/game_over_screen.tscn" id="7_3v6gh"]
+[ext_resource type="PackedScene" uid="uid://bq5sfajxnrl7" path="res://scenes/ui/pause_screen.tscn" id="8_qy7fy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
+atlas = ExtResource("2_ie6te")
+region = Rect2(64, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
+atlas = ExtResource("2_ie6te")
+region = Rect2(96, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvxji"]
+atlas = ExtResource("2_ie6te")
+region = Rect2(0, 65, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
+atlas = ExtResource("2_ie6te")
+region = Rect2(32, 65, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
+atlas = ExtResource("2_ie6te")
+region = Rect2(64, 65, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
+atlas = ExtResource("2_ie6te")
+region = Rect2(96, 65, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
+atlas = ExtResource("2_ie6te")
+region = Rect2(0, 33, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gtgg"]
+atlas = ExtResource("2_ie6te")
+region = Rect2(32, 33, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
+atlas = ExtResource("2_ie6te")
+region = Rect2(64, 33, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
+atlas = ExtResource("2_ie6te")
+region = Rect2(96, 33, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fm80t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dovo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmlin")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvxji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p47bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75vfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0owmy")
+}],
+"loop": true,
+"name": &"left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qek5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gtgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h17s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je7p5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
+radius = 6.0
+
+[node name="CimarronChar" type="CharacterBody2D" unique_id=421931003]
+z_index = 1
+collision_layer = 5
+collision_mask = 4
+script = ExtResource("1_ny6k7")
+MaxHp = 999999.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1835447505]
+texture_filter = 1
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_fm80t")
+animation = &"walk"
+autoplay = "left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=483083930]
+shape = SubResource("CircleShape2D_8afob")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1406187896]
+zoom = Vector2(2, 2)
+
+[node name="WeaponManager" type="Node" parent="." unique_id=2042399513]
+script = ExtResource("3_v65j0")
+
+[node name="XpManger" type="Node" parent="." unique_id=1535233591]
+script = ExtResource("5_h1xl0")
+
+[node name="Hud" parent="." unique_id=263779862 instance=ExtResource("5_o3svh")]
+
+[node name="LevelUpScreen" parent="." unique_id=699232108 instance=ExtResource("6_h1xl0")]
+
+[node name="GameOverScreen" parent="." unique_id=565696738 instance=ExtResource("7_3v6gh")]
+
+[node name="PauseScreen" parent="." unique_id=342732342 instance=ExtResource("8_qy7fy")]
+process_mode = 3

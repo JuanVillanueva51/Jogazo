@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" format=3 uid="uid://cgg8ne0hfu8m3"]
+
+[ext_resource type="PackedScene" uid="uid://b1hd7d1tf0x26" path="res://scenes/enemies/wolf.tscn" id="1_k2nde"]
+[ext_resource type="Script" uid="uid://bgcvn4ehtm6nd" path="res://EnemySpawnData.cs" id="1_p6has"]
+
+[resource]
+script = ExtResource("1_p6has")
+EnemyScene = ExtResource("1_k2nde")
+MinSpawnTimeSeconds = 360.0
+metadata/_custom_type_script = "uid://bgcvn4ehtm6nd"

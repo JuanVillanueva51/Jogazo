@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dbhsql4jmv0uh"]
+
+[ext_resource type="Script" uid="uid://lk8f4eju3my3" path="res://scripts/enemies/Enemy.cs" id="1_4mhiy"]
+[ext_resource type="Texture2D" uid="uid://cm87fmqr8byha" path="res://sprites/Enemigos/Vampires2_Run_full.png" id="1_uimbp"]
+[ext_resource type="PackedScene" uid="uid://c0seyw7pihuba" path="res://scenes/currency/experience/exp_orb.tscn" id="2_puilx"]
+[ext_resource type="PackedScene" uid="uid://uu1yk1dr4okj" path="res://scenes/currency/coins/gold_coin.tscn" id="3_0sljg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mhiy"]
+atlas = ExtResource("1_uimbp")
+region = Rect2(448, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1dt5"]
+atlas = ExtResource("1_uimbp")
+region = Rect2(384, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puilx"]
+atlas = ExtResource("1_uimbp")
+region = Rect2(320, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sljg"]
+atlas = ExtResource("1_uimbp")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52wpm"]
+atlas = ExtResource("1_uimbp")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ep6u"]
+atlas = ExtResource("1_uimbp")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o42j0"]
+atlas = ExtResource("1_uimbp")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5bui"]
+atlas = ExtResource("1_uimbp")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ylc7c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mhiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1dt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puilx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sljg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52wpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ep6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o42j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5bui")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_masi1"]
+radius = 6.0827627
+
+[node name="Vampire" type="CharacterBody2D" unique_id=1639020721]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_4mhiy")
+MaxHp = 180.0
+Speed = 30.0
+ExpOrbScene = ExtResource("2_puilx")
+GoldCoinScene = ExtResource("3_0sljg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1272033045]
+sprite_frames = SubResource("SpriteFrames_ylc7c")
+autoplay = "default"
+frame_progress = 0.16103318
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1074340527]
+shape = SubResource("CircleShape2D_masi1")
