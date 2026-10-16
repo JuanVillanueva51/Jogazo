@@ -1,64 +1,61 @@
 [gd_scene format=3 uid="uid://bss3t8mk6swqk"]
 
-[ext_resource type="Texture2D" uid="uid://dpr6pf76cxmk3" path="res://sprites/Armas/ground_impact/Earth-Impact_11.png" id="1_tciil"]
 [ext_resource type="Script" uid="uid://c06rbr75ymq4i" path="res://scripts/weapons/Mallet.cs" id="1_uyqgt"]
-[ext_resource type="Texture2D" uid="uid://uj3abhsgksk4" path="res://sprites/Armas/ground_impact/Earth-Impact_12.png" id="2_hvqom"]
-[ext_resource type="Texture2D" uid="uid://8aigcnrrywc8" path="res://sprites/Armas/ground_impact/Earth-Impact_13.png" id="3_nlqda"]
-[ext_resource type="Texture2D" uid="uid://btbkd18gx34vp" path="res://sprites/Armas/ground_impact/Earth-Impact_14.png" id="4_d4u77"]
-[ext_resource type="Texture2D" uid="uid://71n64u34gjja" path="res://sprites/Armas/ground_impact/Earth-Impact_15.png" id="5_pr6qp"]
-[ext_resource type="Texture2D" uid="uid://gatl4fo2hwuy" path="res://sprites/Armas/Yellow Effect Bullet Impact Explosion 32x32.png" id="7_763vw"]
+[ext_resource type="Texture2D" uid="uid://c2t2gd3yv6fkr" path="res://sprites/maza_golpe_cono.png" id="2_x1jtn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yb2ev"]
-radius = 21.095022
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfytb"]
+atlas = ExtResource("2_x1jtn")
+region = Rect2(0, 0, 128, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2kj0"]
+atlas = ExtResource("2_x1jtn")
+region = Rect2(128, 0, 128, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuphr"]
+atlas = ExtResource("2_x1jtn")
+region = Rect2(256, 0, 128, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyqgt"]
+atlas = ExtResource("2_x1jtn")
+region = Rect2(384, 0, 128, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_763vw"]
-atlas = ExtResource("7_763vw")
-region = Rect2(192, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2cgu"]
-atlas = ExtResource("7_763vw")
-region = Rect2(224, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ex4g4"]
-atlas = ExtResource("7_763vw")
-region = Rect2(256, 160, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_epeyr"]
-atlas = ExtResource("7_763vw")
-region = Rect2(288, 160, 32, 32)
+atlas = ExtResource("2_x1jtn")
+region = Rect2(512, 0, 128, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14syq"]
-atlas = ExtResource("7_763vw")
-region = Rect2(64, 0, 32, 32)
+atlas = ExtResource("2_x1jtn")
+region = Rect2(640, 0, 128, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ju67"]
-atlas = ExtResource("7_763vw")
-region = Rect2(96, 0, 32, 32)
+atlas = ExtResource("2_x1jtn")
+region = Rect2(768, 0, 128, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_syc3x"]
-atlas = ExtResource("7_763vw")
-region = Rect2(128, 0, 32, 32)
+atlas = ExtResource("2_x1jtn")
+region = Rect2(896, 0, 128, 112)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_w2cgu"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_rd5g2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_mfytb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2kj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuphr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyqgt")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_763vw")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w2cgu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ex4g4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_epeyr")
-}],
-"loop": false,
-"name": &"GroundImpact",
-"speed": 15.0
-}, {
-"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_14syq")
 }, {
@@ -68,203 +65,30 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_syc3x")
 }],
-"loop": true,
-"name": &"Ricochet",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iubxw"]
-atlas = ExtResource("1_tciil")
-region = Rect2(0, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_au6di"]
-atlas = ExtResource("2_hvqom")
-region = Rect2(0, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2wdkn"]
-atlas = ExtResource("3_nlqda")
-region = Rect2(0, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0p6w2"]
-atlas = ExtResource("4_d4u77")
-region = Rect2(0, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k1t23"]
-atlas = ExtResource("5_pr6qp")
-region = Rect2(0, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uwlde"]
-atlas = ExtResource("7_763vw")
-region = Rect2(45, 256, 45, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v4ij5"]
-atlas = ExtResource("7_763vw")
-region = Rect2(90, 256, 45, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ifjjb"]
-atlas = ExtResource("7_763vw")
-region = Rect2(135, 256, 45, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rd5g2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iubxw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_au6di")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2wdkn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0p6w2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k1t23")
-}],
-"loop": true,
+"loop": 0,
 "name": &"GroundImpact",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uwlde")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v4ij5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ifjjb")
-}],
-"loop": false,
-"name": &"Ricochet",
-"speed": 15.0
+"speed": 26.0
 }]
-
-[sub_resource type="Animation" id="Animation_ex4g4"]
-resource_name = "Mallet_Attack"
-length = 1.0333333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GroundImpact:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FireStrike:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.26666668),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FireStrike")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.06666666),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"", 1.0, false],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_epeyr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FireStrike:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GroundImpact:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_uwlde"]
-_data = {
-&"Mallet_Attack": SubResource("Animation_ex4g4"),
-&"RESET": SubResource("Animation_epeyr")
-}
 
 [node name="MalletImpact" type="Area2D" unique_id=1702273841]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_uyqgt")
-Lifetime = 1.0
+Lifetime = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=245110245]
 shape = SubResource("CircleShape2D_yb2ev")
 
-[node name="GroundImpact" type="AnimatedSprite2D" parent="." unique_id=1841135727]
-visible = false
+[node name="FireStrike" type="AnimatedSprite2D" parent="." unique_id=1488429894]
 texture_filter = 1
-position = Vector2(0.9999995, -2.9999998)
-scale = Vector2(0.89811194, 0.6737971)
-sprite_frames = SubResource("SpriteFrames_w2cgu")
+position = Vector2(33, 0)
+scale = Vector2(0.58135426, 0.428698)
+sprite_frames = SubResource("SpriteFrames_rd5g2")
 animation = &"GroundImpact"
 autoplay = "GroundImpact"
-frame = 3
-frame_progress = 1.0
-
-[node name="FireStrike" type="AnimatedSprite2D" parent="." unique_id=1488429894]
-visible = false
-texture_filter = 1
-position = Vector2(48, -6)
-scale = Vector2(1.2027085, 1.1507293)
-sprite_frames = SubResource("SpriteFrames_rd5g2")
-animation = &"Ricochet"
-frame = 2
+frame = 7
 frame_progress = 1.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1109698604]
-position = Vector2(-5, 0)
+position = Vector2(-8, 2)
 polygon = PackedVector2Array(12, -2, 57, -26, 57, 18)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=662714759]
-libraries/ = SubResource("AnimationLibrary_uwlde")
-autoplay = &"Mallet_Attack"
