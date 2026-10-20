@@ -17,7 +17,8 @@ public static class LootDropper
 			SpawnFreeChest(ChestTier.Jefe, kill.Position);
 			return;
 		}
-		if (kill.IsElite && GD.Randf() < Balance.EliteChestDropChance)
+		float chance = GameManager.Instance != null ? GameManager.Instance.EliteChestChance : Balance.EliteChestDropChance;
+		if (kill.IsElite && GD.Randf() < chance)
 		{
 			ChestTier tier = ChestTier.Pequeno;
 			float r = GD.Randf();

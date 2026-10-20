@@ -44,6 +44,18 @@ public partial class CharacterSelect : Control
 		_confirmButton.Pressed += OnConfirm;
 
 		BuildGrid();
+
+		// Aviso de modo demo
+		if (GameManager.Instance != null && GameManager.Instance.NextRunIsDemo)
+		{
+			var demoLabel = UiFactory.MakeLabel("MODO DEMO · partida rápida de un solo mapa", 18, new Color(1f, 0.6f, 0.4f));
+			demoLabel.HorizontalAlignment = HorizontalAlignment.Center;
+			// La raíz de esta escena está anclada al centro de la pantalla
+			Vector2 screen = GetViewportRect().Size;
+			demoLabel.Position = new Vector2(-260f, 10f) - GlobalPosition + new Vector2(screen.X * 0.5f, 0f);
+			demoLabel.Size = new Vector2(520f, 28f);
+			AddChild(demoLabel);
+		}
 		//Esperar un frame para que los botones tengan su posición calculada
 		CallDeferred(nameof(SelectCharacter), 0);
 	}

@@ -107,6 +107,33 @@ public static class Balance
 	/// <summary>Los enemigos aparecen justo fuera de la pantalla, a esta distancia del borde.</summary>
 	public const float OffscreenSpawnMargin = 40f;
 
+	/// <summary>Segundos en cada mapa antes de que aparezca el jefe (modo normal).</summary>
+	public const float BossSpawnTime = 420f;
+
+	// ───────────────────────── Modo demo ─────────────────────────
+	// Partida corta y caótica: tutorial + un solo mapa de combate; al vencer al jefe se gana.
+	/// <summary>El jefe del modo demo aparece a los 2:30 (en vez de 7:00).</summary>
+	public const float DemoBossTime = 150f;
+	/// <summary>La dificultad sube así de rápido respecto al modo normal (3.5 = 3.5 veces).</summary>
+	public const float DemoTimeScaling = 3.5f;
+	/// <summary>Multiplica la frecuencia de aparición de enemigos.</summary>
+	public const float DemoSpawnRate = 2.5f;
+	/// <summary>Probabilidad extra de que cada aparición traiga un grupo.</summary>
+	public const float DemoExtraSpawnBonus = 0.25f;
+	public const int   DemoMaxAliveEnemies = 320;
+	public const float DemoWaveCooldown = 40f;
+	public const float DemoWaveDuration = 15f;
+	public const float DemoEliteBonus = 0.10f;
+	/// <summary>Probabilidad de que un élite suelte cofre en el demo (normal: EliteChestDropChance).</summary>
+	public const float DemoEliteChestChance = 0.5f;
+	public const float DemoXpMultiplier = 2.5f;
+	public const float DemoGoldMultiplier = 2f;
+	public const float DemoChestCostMultiplier = 0.5f;
+	/// <summary>Las torres de mejora se cargan más rápido (15 s × 0.35 ≈ 5 s).</summary>
+	public const float DemoTowerTimeMultiplier = 0.35f;
+	/// <summary>El demo da la mitad de Créditos para que no sea la forma más rápida de conseguirlos.</summary>
+	public const float DemoCreditMultiplier = 0.5f;
+
 	// ───────────────────────── Jugador ─────────────────────────
 	/// <summary>Escala global del daño de las armas (sustituye al antiguo DamageMultiplier = 6).</summary>
 	public const float PlayerDamageScale = 3f;

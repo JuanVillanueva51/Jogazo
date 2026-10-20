@@ -17,7 +17,8 @@ public partial class BossEnemy : Enemy
 	{
 		GameManager.Instance.isBossDefeated = true;
 		GD.Print("Boss derrotado");
-		if (GameManager.Instance.currentMapLevel == 3)
+		// Modo demo: un solo mapa, vencer al primer jefe es la victoria
+		if (GameManager.Instance.currentMapLevel == 3 || GameManager.Instance.IsDemo)
 		{
 			EventManager.Instance.EmitGameWon();
 		}

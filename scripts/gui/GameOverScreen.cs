@@ -44,7 +44,7 @@ public partial class GameOverScreen : CanvasLayer
 	}
 
 	private void ShowGameOver() => Show("GAME OVER", false);
-	private void ShowWin()      => Show("SOBREVIVISTE!", true);
+	private void ShowWin()      => Show(GameManager.Instance != null && GameManager.Instance.IsDemo ? "¡DEMO COMPLETADA!" : "SOBREVIVISTE!", true);
 
 	private void Show(string title, bool won)
 	{

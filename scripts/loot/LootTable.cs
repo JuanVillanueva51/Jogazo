@@ -153,6 +153,7 @@ public static class LootTable
 		int baseCost = baseCostOverride >= 0 ? baseCostOverride : Balance.ChestBaseCost(tier);
 		if (baseCost <= 0) return 0;
 		float scale = GameManager.Instance != null ? GameManager.Instance.CostScale : 1f;
+		if (GameManager.Instance != null && GameManager.Instance.IsDemo) scale *= Balance.DemoChestCostMultiplier;
 		return Mathf.Max(1, Mathf.RoundToInt(baseCost * scale));
 	}
 

@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c4dgqqknn20pp" path="res://scenes/Interactivos/EnhanceTowers/LevelUpTower.tscn" id="14_ccmkw"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/chest.tscn" id="90_chest"]
 [ext_resource type="Script" path="res://scripts/managers/MapBounds.cs" id="92_bounds"]
+[ext_resource type="Script" path="res://scripts/tutorialScripts/TutorialGuide.cs" id="93_guide"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpje1"]
 texture = ExtResource("1_2u2jk")
@@ -3410,7 +3411,7 @@ position = Vector2(1834, 473)
 script = ExtResource("13_n0wfb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTransicion" unique_id=1439631177]
-position = Vector2(639.5, 81.5)
+position = Vector2(-432, 81.5)
 shape = SubResource("RectangleShape2D_tltx5")
 
 [node name="WorldSpawner" type="Node" parent="." unique_id=2061981868]
@@ -3422,7 +3423,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=439911627]
-position = Vector2(832.75, -465)
+position = Vector2(832.75, -365)
 shape = SubResource("RectangleShape2D_dgeat")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1007099313]
@@ -3430,7 +3431,7 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1333165696]
-position = Vector2(-838.5, 628.75)
+position = Vector2(-153.5, 628.75)
 shape = SubResource("RectangleShape2D_ccmkw")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=582284423]
@@ -3438,7 +3439,7 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=654194388]
-position = Vector2(835.25, 1294)
+position = Vector2(835.25, 1084)
 shape = SubResource("RectangleShape2D_x1qaq")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1561699220]
@@ -3446,11 +3447,11 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1006307702]
-position = Vector2(2500.5, 561.75)
+position = Vector2(1465.5, 561.75)
 shape = SubResource("RectangleShape2D_h0oqs")
 
 [node name="LevelUpTower" parent="." unique_id=98600160 instance=ExtResource("14_ccmkw")]
-position = Vector2(1883, 580)
+position = Vector2(1097, 734)
 
 [node name="Botin" type="Node2D" parent="."]
 
@@ -3459,9 +3460,15 @@ position = Vector2(70, 30)
 Tier = 0
 IsFree = true
 
-
 [node name="LimitesMapa" type="Node2D" parent="."]
 script = ExtResource("92_bounds")
-CameraLimits = Rect2(-862, -224, 3393, 1556)
+CameraLimits = Rect2(-179, -122, 1672, 1232)
+
+
+[node name="GuiaTutorial" type="Node2D" parent="."]
+script = ExtResource("93_guide")
+ChestPath = NodePath("../Botin/CofreTutorial")
+TowerPath = NodePath("../LevelUpTower")
+ExitPath = NodePath("../AreaTransicion")
 
 [editable path="ZonaRestringuida2"]

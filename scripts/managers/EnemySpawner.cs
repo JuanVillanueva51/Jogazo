@@ -28,6 +28,14 @@ public partial class EnemySpawner : Node
 		_player          = GetTree().GetFirstNodeInGroup("player") as Player;
 		_currentInterval = BaseSpawnInterval;
 		WaveActive = false;
+
+		// Modo demo: más enemigos, oleadas más seguidas
+		if (GameManager.Instance != null && GameManager.Instance.IsDemo)
+		{
+			waveCooldown = Balance.DemoWaveCooldown;
+			waveDuration = Balance.DemoWaveDuration;
+			MaxAliveEnemies = Mathf.Max(MaxAliveEnemies, Balance.DemoMaxAliveEnemies);
+		}
 	}
 
 	public override void _ExitTree()
@@ -71,7 +79,10 @@ public partial class EnemySpawner : Node
 		WaveActive = isWaveActive;
 
 		float minutesInMap = gm.ElapsedTime / 60f;
-		float normalInterval = Balance.SpawnInterval(BaseSpawnInterval, minutesInMap, gm.diffModifier, gm.Difficulty.SpawnRate);
+		float spawnRate = gm.Difficulty.SpawnRate * (gm.IsDemo ? Balance.DemoSpawnRate : 1f);
+		// En el demo el tiempo "cuenta" más rápido para que los grupos crezcan antes
+		float minutesForGroups = minutesInMap * (gm.IsDemo ? Balance.DemoTimeScaling : 1f);
+		float normalInterval = Balance.SpawnInterval(BaseSpawnInterval, minutesForGroups, gm.diffModifier, spawnRate);
 		_currentInterval = isWaveActive ? Mathf.Min(waveSpawnInterval, normalInterval) : normalInterval;
 
 		if (_spawnTimer >= _currentInterval)
@@ -82,7 +93,7 @@ public partial class EnemySpawner : Node
 			{
 				// Grupos: con el tiempo cada aparición puede traer varios enemigos juntos
 				int group = 1;
-				float extra = Balance.ExtraSpawnChance(minutesInMap);
+				float extra = Balance.ExtraSpawnChance(minutesForGroups) + (gm.IsDemo ? Balance.DemoExtraSpawnBonus : 0f);
 				while (group < Balance.MaxGroupSize && GD.Randf() < extra) group++;
 				group = Mathf.Min(group, MaxAliveEnemies - alive);
 

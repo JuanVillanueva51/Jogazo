@@ -25,6 +25,8 @@ public partial class Chest : Interactable
 	private AtlasTexture _openTex;
 
 	public int CurrentCost => IsFree ? 0 : LootTable.ChestCost(Tier, BaseCost);
+	/// <summary>True cuando ya se abrió (lo usa la guía del tutorial).</summary>
+	public bool IsOpened => _opened;
 
 	public static Color TierColor(ChestTier tier) => tier switch
 	{

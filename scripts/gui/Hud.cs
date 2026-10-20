@@ -41,6 +41,12 @@ public partial class Hud : CanvasLayer
 	private Label _creditsLabel;
 	private Label _difficultyLabel;
 	private Label _waveLabel;
+	// Flecha hacia el jefe (cuando aparece) y hacia la salida (cuando ya se venció)
+	private ObjectivePointer _pointer;
+	private Area2D _exitArea;
+	private bool _exitSearched;
+	private float _pointerScan;
+	private Node2D _boss;
 	private Label _toastLabel;
 	private Label _fpsLabel;
 	private float _toastTimer;
@@ -132,6 +138,9 @@ public partial class Hud : CanvasLayer
 		_difficultyLabel.Size = new Vector2(280f, 14f);
 		_difficultyLabel.HorizontalAlignment = HorizontalAlignment.Center;
 		AddChild(_difficultyLabel);
+
+		_pointer = new ObjectivePointer { Name = "ObjectivePointer" };
+		AddChild(_pointer);
 
 		// Aviso de oleada (EnemySpawner.WaveActive)
 		_waveLabel = UiFactory.MakeLabel("¡OLEADA!", 16, UiFactory.ErrorColor);
@@ -312,7 +321,19 @@ public partial class Hud : CanvasLayer
 		_timerLabel.Text = $"{seconds / 60:D2}:{seconds % 60:D2}";
 
 		bool showLevel = settings == null || settings.ShowEnemyLevel;
-		_difficultyLabel.Text = showLevel && gm.currentMapLevel > 0 ? $"Nivel enemigo {gm.EnemyLevel:0.0} · {gm.Difficulty.Name}" : "";
+		string info = "";
+		if (gm.currentMapLevel > 0)
+		{
+			if (gm.IsDemo) info = "DEMO";
+			if (showLevel) info += (info.Length > 0 ? " · " : "") + $"Nivel enemigo {gm.EnemyLevel:0.0} · {gm.Difficulty.Name}";
+			if (!gm.isBossSpawned)
+			{
+				int left = Mathf.Max(0, Mathf.CeilToInt(gm.WinTime - gm.ElapsedTime));
+				info += (info.Length > 0 ? " · " : "") + $"Jefe en {left / 60}:{left % 60:D2}";
+			}
+		}
+		_difficultyLabel.Text = info;
+		UpdatePointer(gm, dt);
 
 		bool wave = EnemySpawner.WaveActive && gm.currentMapLevel > 0;
 		_waveLabel.Visible = wave;
@@ -339,6 +360,62 @@ public partial class Hud : CanvasLayer
 			m.A = Mathf.Clamp(_toastTimer, 0f, 1f);
 			_toastLabel.Modulate = m;
 			if (_toastTimer <= 0f) _toastLabel.Visible = false;
+		}
+	}
+
+	/// <summary>En los mapas de combate: apunta al jefe vivo y, cuando ya se venció, a la salida.</summary>
+	private void UpdatePointer(GameManager gm, float dt)
+	{
+		if (_pointer == null) return;
+		if (gm.currentMapLevel <= 0)
+		{
+			_pointer.Target = null; // el tutorial tiene su propia guía
+			return;
+		}
+
+		_pointerScan -= dt;
+		if (_pointerScan <= 0f)
+		{
+			_pointerScan = 0.25f;
+			_boss = null;
+			if (gm.isBossSpawned && !gm.isBossDefeated)
+			{
+				foreach (Node node in GetTree().GetNodesInGroup("enemies"))
+				{
+					if (node is IEnemy enemy && enemy.IsBoss && !enemy.IsDead && node is Node2D body)
+					{
+						_boss = body;
+						break;
+					}
+				}
+			}
+			if (!_exitSearched)
+			{
+				_exitSearched = true;
+				Node scene = GetTree().CurrentScene;
+				if (scene != null)
+					foreach (Node child in scene.GetChildren())
+						if (child is AreaTransicion2 || child is AreaTrans) { _exitArea = child as Area2D; break; }
+			}
+		}
+
+		if (_boss != null && IsInstanceValid(_boss))
+		{
+			_pointer.Target = _boss.GlobalPosition;
+			_pointer.TargetLabel = "JEFE";
+			_pointer.PointerColor = new Color(1f, 0.35f, 0.35f);
+			_pointer.HoverHeight = 70f;
+		}
+		else if (gm.isBossDefeated && !gm.IsDemo && _exitArea != null && IsInstanceValid(_exitArea))
+		{
+			_pointer.Target = ObjectivePointer.ClosestPointInArea(_exitArea, _player.GlobalPosition);
+			_pointer.TargetLabel = "SALIDA";
+			_pointer.PointerColor = new Color(0.45f, 1f, 0.55f);
+			_pointer.HoverHeight = 34f;
+		}
+		else
+		{
+			_pointer.Target = null;
 		}
 	}
 

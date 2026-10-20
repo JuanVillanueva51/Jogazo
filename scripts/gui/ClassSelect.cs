@@ -49,7 +49,11 @@ public partial class ClassSelect : Control
 		if (SettingsManager.Instance != null)
 		{
 			var preset = Balance.GetDifficulty(SettingsManager.Instance.DifficultyIndex);
-			var difficultyLabel = new Label { Name = "DifficultyLabel", Text = $"Dificultad: {preset.Name} (cámbiala en Configuración)", AutowrapMode = TextServer.AutowrapMode.WordSmart };
+			bool demo = GameManager.Instance != null && GameManager.Instance.NextRunIsDemo;
+			string text = demo
+				? $"MODO DEMO: tutorial + un mapa rápido y caótico · Dificultad: {preset.Name}"
+				: $"Dificultad: {preset.Name} (cámbiala en Configuración)";
+			var difficultyLabel = new Label { Name = "DifficultyLabel", Text = text, AutowrapMode = TextServer.AutowrapMode.WordSmart };
 			difficultyLabel.AddThemeFontSizeOverride("font_size", 11);
 			difficultyLabel.AddThemeColorOverride("font_color", new Color(1f, 0.6f, 0.55f));
 			vbox.AddChild(difficultyLabel);

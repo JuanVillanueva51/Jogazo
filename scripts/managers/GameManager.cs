@@ -26,7 +26,8 @@ public partial class GameManager : Node
 	public float ElapsedTime           { get; set; } = 0f;
 	/// <summary>Tiempo total de la partida (decide la dificultad).</summary>
 	public float TotalRunTime          { get; private set; } = 0f;
-	public float WinTime               { get; }       = 420f;
+	/// <summary>Segundos en el mapa antes de que aparezca el jefe.</summary>
+	public float WinTime               => IsDemo ? Balance.DemoBossTime : Balance.BossSpawnTime;
 	public int   Coins                 { get; set; } = 0;
 
 	public string      SelectedCharacterScene { get; set; } = "res://scenes/player/cimarron_char.tscn";
@@ -39,6 +40,10 @@ public partial class GameManager : Node
 	/// <summary>Dificultad de la partida actual (se toma de Configuración al empezar una partida nueva).</summary>
 	public int DifficultyIndex { get; private set; } = 0;
 	public DifficultyPreset Difficulty => Balance.GetDifficulty(DifficultyIndex);
+	/// <summary>True si la partida actual es el modo demo (tutorial + un mapa, rápido y caótico).</summary>
+	public bool IsDemo { get; private set; }
+	/// <summary>El menú principal lo pone en true (botón DEMO) o false (JUGAR) antes de elegir personaje.</summary>
+	public bool NextRunIsDemo { get; set; }
 	public int currentMapLevel {get; set; } = 0;
 	public bool isBossSpawned {get; set; } = false;
 	public bool isBossDefeated {get; set;} = false;
@@ -59,10 +64,14 @@ public partial class GameManager : Node
 	private float _creditMinuteTimer;
 
 	// ───────────────────────── Dificultad ─────────────────────────
-	public float DifficultyCoefficient => Balance.Coefficient(TotalRunTime, Mathf.Max(0, currentMapLevel - 1), diffModifier, Difficulty.ScalingValue);
+	public float DifficultyCoefficient => Balance.Coefficient(TotalRunTime * (IsDemo ? Balance.DemoTimeScaling : 1f),
+		Mathf.Max(0, currentMapLevel - 1), diffModifier, Difficulty.ScalingValue);
 	public float EnemyLevel => Balance.EnemyLevel(DifficultyCoefficient);
 	public float CostScale => Balance.CostScale(DifficultyCoefficient);
-	public float CurrentEliteChance => Mathf.Min(Balance.EliteChance(eliteProbability, TotalRunTime) + Difficulty.EliteBonus, 0.5f);
+	public float CurrentEliteChance => Mathf.Min(Balance.EliteChance(eliteProbability, TotalRunTime)
+		+ Difficulty.EliteBonus + (IsDemo ? Balance.DemoEliteBonus : 0f), 0.5f);
+	/// <summary>Probabilidad de que un élite suelte cofre.</summary>
+	public float EliteChestChance => IsDemo ? Balance.DemoEliteChestChance : Balance.EliteChestDropChance;
 
 	public override void _EnterTree() => Instance = this;
 
@@ -127,6 +136,7 @@ public partial class GameManager : Node
 	{
 		var player = GetTree().GetFirstNodeInGroup("player") as Player;
 		float mult = player != null ? Mathf.Max(0f, player.Stats.XpMultiplier) : 1f;
+		if (IsDemo) mult *= Balance.DemoXpMultiplier;
 		CurrentXp += amount * mult;
 		if (CurrentXp >= XpToNextLevel)
 		{
@@ -144,6 +154,7 @@ public partial class GameManager : Node
 	{
 		var player = GetTree().GetFirstNodeInGroup("player") as Player;
 		float mult = player != null ? Mathf.Max(0f, player.Stats.GoldMultiplier) : 1f;
+		if (IsDemo) mult *= Balance.DemoGoldMultiplier;
 		float total = amount * mult + _coinRemainder;
 		int whole = Mathf.FloorToInt(total);
 		_coinRemainder = total - whole;
@@ -175,7 +186,7 @@ public partial class GameManager : Node
 	{
 		if (amount <= 0) return;
 		// Las dificultades altas dan más Créditos (se guarda el residuo para no perder fracciones)
-		float total = amount * Difficulty.CreditMultiplier + _creditRemainder;
+		float total = amount * Difficulty.CreditMultiplier * (IsDemo ? Balance.DemoCreditMultiplier : 1f) + _creditRemainder;
 		int whole = Mathf.FloorToInt(total);
 		_creditRemainder = total - whole;
 		if (whole <= 0) return;
@@ -207,6 +218,7 @@ public partial class GameManager : Node
 	{
 		ResetRun();
 		DifficultyIndex = SettingsManager.Instance != null ? SettingsManager.Instance.DifficultyIndex : 0;
+		IsDemo = NextRunIsDemo;
 		Run = new RunStats { Active = true };
 	}
 
@@ -251,6 +263,7 @@ public partial class GameManager : Node
 		currentMapLevel = 0;
 		diffModifier = 1f;
 		eliteProbability = Balance.BaseEliteProbability;
+		IsDemo = false;
 		IsModalOpen = false;
 		_coinRemainder = 0f;
 		_creditRemainder = 0f;

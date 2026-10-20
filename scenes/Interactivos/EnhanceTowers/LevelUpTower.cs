@@ -8,8 +8,14 @@ public partial class LevelUpTower : Area2D
 	private bool Used = false;
 	private TowerLevelUpScreen upgradeScreen;
 	private ProgressBar progressBar;
+	/// <summary>True cuando ya se usó (lo usa la guía del tutorial).</summary>
+	public bool IsUsed => Used;
 	public override void _Ready()
 	{
+		// Modo demo: las torres se cargan más rápido
+		if (GameManager.Instance != null && GameManager.Instance.IsDemo)
+			WaitTime *= Balance.DemoTowerTimeMultiplier;
+
 		upgradeScreen = GetNode<TowerLevelUpScreen>("TowerLevelUpScreen");
 		progressBar = GetNode<ProgressBar>("ProgressBar");
 		

@@ -186,3 +186,19 @@ Cada mapa tiene un nodo **LimitesMapa** con un rectángulo `CameraLimits` (se ve
 - Los muros invisibles siguen siendo `StaticBody2D` (capas 1 y 3). En el tutorial se acercaron un poco al borde pintado para que el personaje no quede pegado al borde de la pantalla. En el mapa 2 se agregó `LimitesMapa/MuroDerecho`, que cierra un hueco arriba a la derecha por donde se podía salir del mapa.
 - Si cambias el tamaño de un mapa, ajusta `CameraLimits` para que cubra solo el área pintada.
 - Los enemigos aparecen dentro de este rectángulo, justo fuera de la pantalla.
+
+## Menú principal: Demo e Historia
+
+- **DEMO** (junto a JUGAR): partida corta y caótica. Se elige personaje y clase, se pasa por el tutorial y luego **un solo mapa de combate**; al vencer al jefe se gana (`BossEnemy`). Todos los valores están en `Balance.cs`, sección "Modo demo":
+  - El jefe aparece a los 2:30 (`DemoBossTime`) y la dificultad sube 3.5 veces más rápido (`DemoTimeScaling`).
+  - 2.5 veces más enemigos, grupos más grandes, oleadas cada 40 s, +10% de élites y 50% de que un élite suelte cofre.
+  - Experiencia ×2.5, monedas ×2, cofres a mitad de precio, torres de mejora en ~5 s.
+  - Da la mitad de Créditos (`DemoCreditMultiplier`).
+  - El modo se guarda en `GameManager.IsDemo` (el menú pone `NextRunIsDemo` antes de elegir personaje).
+- **HISTORIA**: pantalla `scenes/ui/historia.tscn` (`HistoryScreen.cs`). Reproduce la narración `sprites/music/historia_introduccion.mp3` con subtítulos sincronizados, barra para adelantar, pausa (Espacio), texto completo (clic en una línea para escuchar desde ahí) y Escape para volver. El texto y los tiempos de cada línea están en `scripts/gui/HistoryText.cs`.
+
+## Nivel inicial (tutorial)
+
+- Más pequeño: los muros invisibles y `LimitesMapa` encierran solo la zona de la casa y el campo de tierra; la salida (`AreaTransicion`) quedó a la derecha del campo y la torre de mejora dentro del campo.
+- **Guía** (`GuiaTutorial`, `scripts/tutorialScripts/TutorialGuide.cs`): abajo de la pantalla muestra el paso actual (moverse → abrir el cofre → recoger el objeto → dash → torre, opcional → salida) con las teclas configuradas, y una flecha (`ObjectivePointer`) que apunta al cofre, al objeto, a la torre o a la salida. En la salida hay flechas animadas en el suelo.
+- En los mapas de combate, el HUD muestra "Jefe en m:ss", una flecha hacia el jefe cuando aparece y, después de vencerlo, otra hacia la salida.
