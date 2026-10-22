@@ -62,7 +62,7 @@ public static class WeaponLibrary
 				BulletScene=longSword,
 				IconPath = "res://sprites/Sword.png"
 			},
-			new WeaponData {
+			new WeaponData { //Damage=35f Original
 				Name="Arco", WeaponType="ranged",
 				Description="Flechas rápidas de largo alcance.",
 				Damage=35f, Speed=500f, Lifetime=3f, FireRate=1.0f,
@@ -90,7 +90,7 @@ public static class WeaponLibrary
 				BulletScene=mallet,
 				IconPath = "res://sprites/mace.png"
 			},
-			new WeaponData {
+			new WeaponData { //Damage 20f FireRate 0.6 Original
 				Name="Catalizador de Energia", WeaponType="magic",
 				Description="Rayo de energía que perfora.",
 				Damage=20f, Speed=600f, Lifetime=4f, FireRate=0.6f,
