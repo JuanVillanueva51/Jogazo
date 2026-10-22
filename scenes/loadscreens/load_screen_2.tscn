@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dkeql7nv2ljit"]
 
 [ext_resource type="VideoStream" uid="uid://3b2elwxc06ld" path="res://sprites/videos/Luna_Azul.ogv" id="1_bqrld"]
-[ext_resource type="Script" uid="uid://b4p3i4wqhtfwt" path="res://scripts/LoadScreen.cs" id="1_tncnc"]
+[ext_resource type="Script" uid="uid://dpwbfv20n186y" path="res://scripts/LoadScreen2.cs" id="1_tncnc"]
 [ext_resource type="Texture2D" uid="uid://dik7bit7n52wb" path="res://sprites/tutorial/cargando_anim.png" id="2_tncnc"]
 [ext_resource type="Texture2D" uid="uid://txn2npt1avpc" path="res://sprites/Personajes/cimarron_anim.png" id="3_sqocf"]
 
@@ -36,7 +36,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s7wee")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -72,14 +72,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0hf33")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
 
 [node name="LoadScreen2" type="Node2D" unique_id=1096119557]
 script = ExtResource("1_tncnc")
-NextScene = "res://scenes/mapas/cursed_map.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=934173945]
 position = Vector2(573, 328)
@@ -100,6 +99,7 @@ size_flags_vertical = 3
 stream = ExtResource("1_bqrld")
 autoplay = true
 loop = true
+script = ExtResource("1_tncnc")
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=81633177]

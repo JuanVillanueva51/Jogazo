@@ -37,7 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://c2ciuiiqmsull" path="res://scenes/enemies/wormBoss.tscn" id="34_2m0s8"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/chest.tscn" id="90_chest"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/shop_terminal.tscn" id="91_shop"]
-[ext_resource type="Script" path="res://scripts/managers/MapBounds.cs" id="92_bounds"]
+[ext_resource type="Script" uid="uid://cnno7xqclj4ni" path="res://scripts/managers/MapBounds.cs" id="92_bounds"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_75rvs"]
 texture = ExtResource("1_qh5pf")
@@ -15348,39 +15348,35 @@ position = Vector2(42, 583)
 [node name="LevelUpTower15" parent="." unique_id=343713354 instance=ExtResource("29_1st3p")]
 position = Vector2(936, 369)
 
-[node name="Botin" type="Node2D" parent="."]
+[node name="Botin" type="Node2D" parent="." unique_id=880599032]
 
-[node name="Cofre1" parent="Botin" instance=ExtResource("90_chest")]
+[node name="Cofre1" parent="Botin" unique_id=833588933 instance=ExtResource("90_chest")]
 position = Vector2(-451, -208)
-Tier = 0
 
-[node name="Cofre2" parent="Botin" instance=ExtResource("90_chest")]
+[node name="Cofre2" parent="Botin" unique_id=744253322 instance=ExtResource("90_chest")]
 position = Vector2(462, 652)
-Tier = 0
 
-[node name="Cofre3" parent="Botin" instance=ExtResource("90_chest")]
+[node name="Cofre3" parent="Botin" unique_id=775536525 instance=ExtResource("90_chest")]
 position = Vector2(-879, 178)
-Tier = 0
 
-[node name="Cofre4" parent="Botin" instance=ExtResource("90_chest")]
+[node name="Cofre4" parent="Botin" unique_id=1012088493 instance=ExtResource("90_chest")]
 position = Vector2(787, 350)
-Tier = 0
 
-[node name="CofreGrande" parent="Botin" instance=ExtResource("90_chest")]
+[node name="CofreGrande" parent="Botin" unique_id=1837846976 instance=ExtResource("90_chest")]
 position = Vector2(818, -192)
 Tier = 1
 
-[node name="CofreEquipo" parent="Botin" instance=ExtResource("90_chest")]
+[node name="CofreEquipo" parent="Botin" unique_id=1613369800 instance=ExtResource("90_chest")]
 position = Vector2(-459, 427)
 Tier = 3
 
-[node name="CofreMaldito" parent="Botin" instance=ExtResource("90_chest")]
+[node name="CofreMaldito" parent="Botin" unique_id=1395267904 instance=ExtResource("90_chest")]
 position = Vector2(-107, 861)
 Tier = 4
 
-[node name="Tienda" parent="Botin" instance=ExtResource("91_shop")]
+[node name="Tienda" parent="Botin" unique_id=1087909688 instance=ExtResource("91_shop")]
 position = Vector2(65, 33)
 
-[node name="LimitesMapa" type="Node2D" parent="."]
+[node name="LimitesMapa" type="Node2D" parent="." unique_id=1776022051]
 script = ExtResource("92_bounds")
 CameraLimits = Rect2(-1526, -953, 3569, 2268)

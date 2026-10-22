@@ -3,7 +3,7 @@ using System;
 
 public partial class LoadScreen : Node
 {
-	[Export] public string NextScene = "";
+	[Export] public string NextScene = "res://scenes/mapas/forest_map_2.tscn";
 	[Export] public float MinDisplayTime = 3f; //segundos minimos
 	[Export] public bool WaitForVideo = true; //esperar a que termine el video
 	
