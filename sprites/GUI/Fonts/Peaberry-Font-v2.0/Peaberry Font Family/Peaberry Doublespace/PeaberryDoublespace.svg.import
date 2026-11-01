@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgsv87jptxgkl"
-path="res://.godot/imported/PeaberryDoublespace.svg-ac92c026642732f575d79f3c255397b8.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://sprites/GUI/Fonts/Peaberry-Font-v2.0/Peaberry Font Family/Peaberry Doublespace/PeaberryDoublespace.svg"
-dest_files=["res://.godot/imported/PeaberryDoublespace.svg-ac92c026642732f575d79f3c255397b8.ctex"]
 
 [params]
 
