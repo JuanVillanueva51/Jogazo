@@ -22,7 +22,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oa1go")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 2.0
 }]
@@ -70,7 +70,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 
-[node name="PlayRow" type="HBoxContainer" parent="CenterContainer/VBox"]
+[node name="PlayRow" type="HBoxContainer" parent="CenterContainer/VBox" unique_id=56824954]
 layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="CenterContainer/VBox/PlayRow" unique_id=578867807]
@@ -79,13 +79,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "JUGAR"
 
-[node name="DemoButton" type="Button" parent="CenterContainer/VBox/PlayRow"]
+[node name="DemoButton" type="Button" parent="CenterContainer/VBox/PlayRow" unique_id=603243879]
 custom_minimum_size = Vector2(130, 60)
 layout_mode = 2
 tooltip_text = "Partida corta y caótica de un solo mapa"
 text = "DEMO"
 
-[node name="HistoryButton" type="Button" parent="CenterContainer/VBox"]
+[node name="HistoryButton" type="Button" parent="CenterContainer/VBox" unique_id=424898562]
 layout_mode = 2
 text = "HISTORIA"
 
