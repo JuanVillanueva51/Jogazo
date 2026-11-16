@@ -16,7 +16,7 @@ public static class Balance
 {
 	// ───────────────────────── Dificultad ─────────────────────────
 	/// <summary>Valor de dificultad por defecto (Normal). En RoR2: 1 = fácil, 2 = normal, 3 = difícil.</summary>
-	public const float DifficultyValue = 3.0f;
+	public const float DifficultyValue = 0.1f; //original 3.0
 	public const float TimeFactorPerMinute = 0.0506f;
 	/// <summary>Multiplicador del coeficiente por cada mapa completado.</summary>
 	public const float StageFactor = 1.25f;
@@ -108,7 +108,7 @@ public static class Balance
 	public const float OffscreenSpawnMargin = 40f;
 
 	/// <summary>Segundos en cada mapa antes de que aparezca el jefe (modo normal).</summary>
-	public const float BossSpawnTime = 420f;
+	public const float BossSpawnTime = 420f; //original 420f
 
 	// ───────────────────────── Modo demo ─────────────────────────
 	// Partida corta y caótica: tutorial + un solo mapa de combate; al vencer al jefe se gana.
