@@ -51,8 +51,8 @@ func _wait_for_scene(path: String, timeout_ms := 5000) -> bool:
 		if current != null and current.scene_file_path == path:
 				return true
 
-	await _tree().process_frame
-	elapsed += 16
+		await _tree().process_frame
+		elapsed += 16
 
 	return false
 
@@ -65,9 +65,18 @@ func _wait_frames(n: int):
 	for i in range(n):
 		await _tree().process_frame
 
+func after_test() -> void:
+	var gm:= _tree().root.get_node_or_null("GameManager")
+	if gm != null:
+		gm.set("NextRunIsDemo", false)
+		gm.call("ResetRun")
+	var actual := _tree().current_scene
+	if actual != null and actual.scene_file_path in [CHARACTER_SELECT, CLASS_SELECT, FOREST_MAP]:
+		actual.queue_free()
+		await _tree().process_frame
 
 func test_pause_screen_buttons_exist():
-	var menu = await scene_runner(MAIN_MENU).await_idle()
+	var menu = await scene_runner(MAIN_MENU)
 	_adoptar(menu)
 
 	menu.scene().get_node("CenterContainer/VBox/PlayRow/DemoButton").emit_signal("pressed")
