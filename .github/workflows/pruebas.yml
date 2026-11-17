@@ -1,0 +1,29 @@
+name: Pruebas GdUnit4
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:           
+
+permissions:
+  contents: read
+  actions: read
+  checks: write                 
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: godot-gdunit-labs/gdUnit4-action@v1
+        with:
+          godot-version: '4.7.2'
+          godot-force-mono: true    
+          dotnet-version: 'net8.0'
+          paths: 'res://test'
+          timeout: 15
+          report-name: 'reporte-pruebas.xml'
