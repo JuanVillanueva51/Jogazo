@@ -19,6 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: MamaMia
+        run: rm -rf reports
+        
       - uses: godot-gdunit-labs/gdUnit4-action@v1
         with:
           godot-version: '4.7.2'
