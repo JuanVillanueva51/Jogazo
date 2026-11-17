@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites id="2026-11-16" name="report_1" tests="9" failures="0" skipped="0" flaky="0" time="0.000">
-	<testsuite id="0" name="menu_pantallas_test" package="test/ui" timestamp="2026-11-16T21:36:14" hostname="localhost" tests="9" failures="0" errors="0" skipped="0" flaky="0" time="39.241">
-		<testcase name="test_menu_principal_muestra_jugar_y_demo" classname="menu_pantallas_test" time="1.849">
+<testsuites id="2026-11-16" name="report_1" tests="4" failures="0" skipped="0" flaky="0" time="0.000">
+	<testsuite id="0" name="menu_demo_flujo_test" package="test/ui" timestamp="2026-11-17T02:55:45" hostname="localhost" tests="4" failures="0" errors="0" skipped="0" flaky="0" time="26.143">
+		<testcase name="test_demo_abre_seleccion_de_personaje" classname="menu_demo_flujo_test" time="1.599">
 		</testcase>
-		<testcase name="test_menu_principal_muestra_todas_las_opciones_y_creditos" classname="menu_pantallas_test" time="1.629">
+		<testcase name="test_jugar_no_activa_demo" classname="menu_demo_flujo_test" time="1.598">
 		</testcase>
-		<testcase name="test_seleccion_personaje_aviso_demo:0 (true)" classname="menu_pantallas_test" time="1.829">
+		<testcase name="test_confirmar_personaje_abre_seleccion_de_clase" classname="menu_demo_flujo_test" time="1.616">
 		</testcase>
-		<testcase name="test_seleccion_personaje_aviso_demo:1 (false)" classname="menu_pantallas_test" time="1.652">
-		</testcase>
-		<testcase name="test_seleccion_personaje_primero_por_defecto" classname="menu_pantallas_test" time="1.627">
-		</testcase>
-		<testcase name="test_seleccion_personaje_elegir_cada_uno" classname="menu_pantallas_test" time="9.377">
-		</testcase>
-		<testcase name="test_seleccion_clase_texto_segun_modo:0 (true, &apos;MODO DEMO: tutorial + un mapa rápido y caótico&apos;)" classname="menu_pantallas_test" time="2.423">
-		</testcase>
-		<testcase name="test_seleccion_clase_texto_segun_modo:1 (false, &apos;Dificultad:&apos;)" classname="menu_pantallas_test" time="1.627">
-		</testcase>
-		<testcase name="test_seleccion_clase_elegir_cada_una" classname="menu_pantallas_test" time="17.119">
+		<testcase name="test_flujo_demo_completo_inicia_la_partida" classname="menu_demo_flujo_test" time="21.315">
 		</testcase>
 	</testsuite>
 </testsuites>
