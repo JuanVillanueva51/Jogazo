@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c1nvnyleep0gq"]
+
+[ext_resource type="Script" uid="uid://cx8nw5pouw5u4" path="res://scripts/tutorialScripts/ZonaRestringuida.cs" id="1_qi15h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5lys"]
+size = Vector2(2616.5, 109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_if6gs"]
+size = Vector2(2617, 162.5)
+
+[node name="ZonaRestringuidaFrontal" type="Area2D" unique_id=1316069723]
+script = ExtResource("1_qi15h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1280419991]
+position = Vector2(408.75, 58)
+shape = SubResource("RectangleShape2D_n5lys")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2016018946]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1133001452]
+position = Vector2(408.5, -78.25)
+shape = SubResource("RectangleShape2D_if6gs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

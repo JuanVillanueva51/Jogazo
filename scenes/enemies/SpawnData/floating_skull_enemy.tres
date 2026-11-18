@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" format=3 uid="uid://dfkhqqo3dwnmx"]
+
+[ext_resource type="Script" uid="uid://bgcvn4ehtm6nd" path="res://EnemySpawnData.cs" id="1_7ulnv"]
+[ext_resource type="PackedScene" uid="uid://chqqw67o1uik2" path="res://scenes/enemies/floating_skull_enemy.tscn" id="1_h5pmk"]
+
+[resource]
+script = ExtResource("1_7ulnv")
+EnemyScene = ExtResource("1_h5pmk")
+mapLevel = 2
+MinSpawnTimeSeconds = 180.0
+metadata/_custom_type_script = "uid://bgcvn4ehtm6nd"

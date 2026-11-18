@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://vll20qashssy"]
+
+[ext_resource type="Texture2D" uid="uid://bn1o7lrktgsfd" path="res://sprites/tutorial/spawnsign.png" id="1_51ip6"]
+[ext_resource type="Script" uid="uid://5e0piq61t5ja" path="res://scripts/tutorialScripts/SignText.cs" id="1_qpc1q"]
+[ext_resource type="Texture2D" uid="uid://c4wd4rbjds6ey" path="res://sprites/tutorial/Sign_Texto-removebg-preview.png" id="3_qpc1q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6mpj6"]
+radius = 21.095022
+
+[node name="Area2D" type="Area2D" unique_id=266035313]
+script = ExtResource("1_qpc1q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=308712406]
+texture = ExtResource("1_51ip6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1666454570]
+shape = SubResource("CircleShape2D_6mpj6")
+
+[node name="dialogo" type="Sprite2D" parent="." unique_id=1572608968]
+position = Vector2(52, -29)
+scale = Vector2(0.2652051, 0.3385269)
+texture = ExtResource("3_qpc1q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

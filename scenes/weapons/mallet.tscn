@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://bss3t8mk6swqk"]
+
+[ext_resource type="Script" uid="uid://c06rbr75ymq4i" path="res://scripts/weapons/Mallet.cs" id="1_uyqgt"]
+[ext_resource type="Texture2D" uid="uid://c2t2gd3yv6fkr" path="res://sprites/maza_golpe_cono.png" id="2_x1jtn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yb2ev"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfytb"]
+atlas = ExtResource("2_x1jtn")
+region = Rect2(0, 0, 128, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2kj0"]
+atlas = ExtResource("2_x1jtn")
+region = Rect2(128, 0, 128, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuphr"]
+atlas = ExtResource("2_x1jtn")
+region = Rect2(256, 0, 128, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyqgt"]
+atlas = ExtResource("2_x1jtn")
+region = Rect2(384, 0, 128, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_763vw"]
+atlas = ExtResource("2_x1jtn")
+region = Rect2(512, 0, 128, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14syq"]
+atlas = ExtResource("2_x1jtn")
+region = Rect2(640, 0, 128, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ju67"]
+atlas = ExtResource("2_x1jtn")
+region = Rect2(768, 0, 128, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syc3x"]
+atlas = ExtResource("2_x1jtn")
+region = Rect2(896, 0, 128, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rd5g2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfytb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2kj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuphr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyqgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_763vw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14syq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ju67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syc3x")
+}],
+"loop": 0,
+"name": &"GroundImpact",
+"speed": 26.0
+}]
+
+[node name="MalletImpact" type="Area2D" unique_id=1702273841]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_uyqgt")
+Lifetime = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=245110245]
+shape = SubResource("CircleShape2D_yb2ev")
+
+[node name="FireStrike" type="AnimatedSprite2D" parent="." unique_id=1488429894]
+texture_filter = 1
+position = Vector2(33, 0)
+scale = Vector2(0.58135426, 0.428698)
+sprite_frames = SubResource("SpriteFrames_rd5g2")
+animation = &"GroundImpact"
+autoplay = "GroundImpact"
+frame = 7
+frame_progress = 1.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1109698604]
+position = Vector2(-8, 2)
+polygon = PackedVector2Array(12, -2, 57, -26, 57, 18)

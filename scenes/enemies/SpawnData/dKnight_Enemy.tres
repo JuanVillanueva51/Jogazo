@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" format=3 uid="uid://dgrij8cgj5sm6"]
+
+[ext_resource type="PackedScene" uid="uid://d4gdovgrkw2pa" path="res://scenes/enemies/death_knight.tscn" id="1_3edwt"]
+[ext_resource type="Script" uid="uid://bgcvn4ehtm6nd" path="res://EnemySpawnData.cs" id="1_ls7sy"]
+
+[resource]
+script = ExtResource("1_ls7sy")
+EnemyScene = ExtResource("1_3edwt")
+mapLevel = 2
+MinSpawnTimeSeconds = 360.0
+metadata/_custom_type_script = "uid://bgcvn4ehtm6nd"

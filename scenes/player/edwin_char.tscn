@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://c7816ic22kmop"]
+
+[ext_resource type="Script" uid="uid://dhdxkt4hymkud" path="res://scripts/player/Player.cs" id="1_pibb4"]
+[ext_resource type="Texture2D" uid="uid://cu0j2kcpiyi3c" path="res://sprites/Personajes/Edwin_anim.png" id="2_pibb4"]
+[ext_resource type="Script" uid="uid://tw54rtej0h70" path="res://scripts/managers/WeaponManager.cs" id="3_sxo1c"]
+[ext_resource type="PackedScene" uid="uid://bkporllhh3hq4" path="res://scenes/ui/hud.tscn" id="5_5pjwo"]
+[ext_resource type="Script" uid="uid://gwkm1pdpvtbd" path="res://scripts/managers/XpManger.cs" id="5_p0r6u"]
+[ext_resource type="PackedScene" uid="uid://cdu85o7oydgvl" path="res://scenes/ui/level_up_screen.tscn" id="6_vd0b1"]
+[ext_resource type="PackedScene" uid="uid://drwax6c8a75dr" path="res://scenes/ui/game_over_screen.tscn" id="7_v8t6a"]
+[ext_resource type="PackedScene" uid="uid://bq5sfajxnrl7" path="res://scenes/ui/pause_screen.tscn" id="8_nw10m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxo1c"]
+atlas = ExtResource("2_pibb4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe32u"]
+atlas = ExtResource("2_pibb4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0r6u"]
+atlas = ExtResource("2_pibb4")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pjwo"]
+atlas = ExtResource("2_pibb4")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd0b1"]
+atlas = ExtResource("2_pibb4")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8t6a"]
+atlas = ExtResource("2_pibb4")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0r6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxo1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe32u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0r6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pjwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd0b1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8t6a")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5pjwo"]
+radius = 6.0
+
+[node name="EdwinChar" type="CharacterBody2D" unique_id=2018800660]
+collision_mask = 4
+script = ExtResource("1_pibb4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=708502551]
+texture_filter = 1
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_p0r6u")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=429561480]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_5pjwo")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1482542322]
+zoom = Vector2(2, 2)
+
+[node name="WeaponManager" type="Node" parent="." unique_id=195003390]
+script = ExtResource("3_sxo1c")
+
+[node name="XpManger" type="Node" parent="." unique_id=773168936]
+script = ExtResource("5_p0r6u")
+
+[node name="Hud" parent="." unique_id=263779862 instance=ExtResource("5_5pjwo")]
+
+[node name="LevelUpScreen" parent="." unique_id=699232108 instance=ExtResource("6_vd0b1")]
+
+[node name="GameOverScreen" parent="." unique_id=565696738 instance=ExtResource("7_v8t6a")]
+
+[node name="PauseScreen" parent="." unique_id=342732342 instance=ExtResource("8_nw10m")]
+process_mode = 3

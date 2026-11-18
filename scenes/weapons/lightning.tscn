@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://qnulmbrjayrq"]
+
+[ext_resource type="Texture2D" uid="uid://dpwccmerubdac" path="res://sprites/Armas/Lightning strike.png" id="1_r5bl6"]
+[ext_resource type="Script" uid="uid://86k05vkbiwp8" path="res://scripts/weapons/Lightning.cs" id="1_xjqp8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjqp8"]
+atlas = ExtResource("1_r5bl6")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41ayg"]
+atlas = ExtResource("1_r5bl6")
+region = Rect2(128, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s0jq"]
+atlas = ExtResource("1_r5bl6")
+region = Rect2(256, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyx72"]
+atlas = ExtResource("1_r5bl6")
+region = Rect2(384, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b54wp"]
+atlas = ExtResource("1_r5bl6")
+region = Rect2(512, 0, 128, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3polc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjqp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41ayg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s0jq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyx72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b54wp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjqp8"]
+size = Vector2(6, 25.25)
+
+[node name="Lightning" type="Area2D" unique_id=1493547863]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_xjqp8")
+duration = 0.3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1182560120]
+position = Vector2(-0.96875095, -29.999998)
+scale = Vector2(0.1713867, 0.33984375)
+sprite_frames = SubResource("SpriteFrames_3polc")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1603720357]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_xjqp8")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1245745706]
+width = 4.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true

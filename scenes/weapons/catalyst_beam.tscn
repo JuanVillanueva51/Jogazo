@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cgcjd313q31y"]
+
+[ext_resource type="Texture2D" uid="uid://byxuma1f2lc70" path="res://sprites/Armas/bean1.png" id="1_8hqby"]
+[ext_resource type="Script" uid="uid://betje8hbngl27" path="res://scripts/weapons/Bullet.cs" id="1_qgqsb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgqsb"]
+radius = 7.0
+
+[node name="CatalystBeam" type="Area2D" unique_id=1320911760]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_qgqsb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1481893911]
+shape = SubResource("CircleShape2D_qgqsb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=366219052]
+position = Vector2(1.0000057, 0.9999981)
+rotation = 1.570974
+scale = Vector2(0.48239332, 0.48239332)
+texture = ExtResource("1_8hqby")

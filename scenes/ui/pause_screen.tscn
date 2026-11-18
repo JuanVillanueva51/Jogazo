@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://bq5sfajxnrl7"]
+
+[ext_resource type="Script" uid="uid://d0e3wm8n4ngok" path="res://scenes/ui/PauseScreen.cs" id="1_nxavn"]
+[ext_resource type="FontFile" uid="uid://ba85f4kd7f83f" path="res://sprites/GUI/Fonts/Peaberry-Font-v2.0/Peaberry Font Family/Peaberry Base/PeaberryBase.ttf" id="1_xceqw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nxavn"]
+font = ExtResource("1_xceqw")
+font_size = 52
+
+[sub_resource type="LabelSettings" id="LabelSettings_wrw5x"]
+font = ExtResource("1_xceqw")
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_oc7jr"]
+font = ExtResource("1_xceqw")
+font_size = 22
+
+[node name="PauseScreen" type="CanvasLayer" unique_id=342732342]
+script = ExtResource("1_nxavn")
+
+[node name="MainPanel" type="Panel" parent="." unique_id=125626244]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainPanel" unique_id=900238240]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -118.5
+offset_top = 30.0
+offset_right = 118.5
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "PAUSADO"
+label_settings = SubResource("LabelSettings_nxavn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventoryVBox" type="VBoxContainer" parent="MainPanel" unique_id=1468447646]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 83.0
+offset_right = 383.0
+offset_bottom = 293.0
+
+[node name="TitlePanel" type="Panel" parent="MainPanel/InventoryVBox" unique_id=903147113]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainPanel/InventoryVBox/TitlePanel" unique_id=1364231569]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 336.0
+offset_bottom = 30.0
+text = "INVENTARIO"
+label_settings = SubResource("LabelSettings_wrw5x")
+vertical_alignment = 1
+
+[node name="InventoryPanel" type="Panel" parent="MainPanel/InventoryVBox" unique_id=371610800]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="WeaponsHBox" type="HBoxContainer" parent="MainPanel/InventoryVBox/InventoryPanel" unique_id=2075063208]
+layout_mode = 0
+offset_right = 336.0
+offset_bottom = 50.0
+
+[node name="FirstWeapon" type="TextureRect" parent="MainPanel/InventoryVBox/InventoryPanel/WeaponsHBox" unique_id=1018091270]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="SecondWeapon" type="TextureRect" parent="MainPanel/InventoryVBox/InventoryPanel/WeaponsHBox" unique_id=649800021]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="ThirdWeapon" type="TextureRect" parent="MainPanel/InventoryVBox/InventoryPanel/WeaponsHBox" unique_id=1346300769]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="FourthWeapon" type="TextureRect" parent="MainPanel/InventoryVBox/InventoryPanel/WeaponsHBox" unique_id=1375697132]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel" unique_id=489112222]
+layout_mode = 0
+offset_left = 792.0
+offset_top = 83.0
+offset_right = 1111.0
+offset_bottom = 608.0
+
+[node name="TitlePanel" type="Panel" parent="MainPanel/VBoxContainer" unique_id=1277375416]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainPanel/VBoxContainer/TitlePanel" unique_id=992083087]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 319.0
+offset_bottom = 30.0
+text = "ESTADISTICAS"
+label_settings = SubResource("LabelSettings_oc7jr")
+vertical_alignment = 1
+
+[node name="StatsPanel" type="Panel" parent="MainPanel/VBoxContainer" unique_id=42048906]
+custom_minimum_size = Vector2(0, 490)
+layout_mode = 2
+
+[node name="StatsText" type="Label" parent="MainPanel/VBoxContainer/StatsPanel" unique_id=144077485]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ReanudarButton" type="Button" parent="MainPanel" unique_id=1978384481]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.319
+anchor_right = 0.5
+anchor_bottom = 0.319
+offset_left = -101.125
+offset_top = -31.712006
+offset_right = 101.125
+offset_bottom = 32.287994
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "REANUDAR"
+
+[node name="ConfigButton" type="Button" parent="MainPanel" unique_id=689963943]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.319
+anchor_right = 0.5
+anchor_bottom = 0.319
+offset_left = -101.0
+offset_top = 43.287994
+offset_right = 101.25
+offset_bottom = 107.287994
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "CONFIGURACIÓN"
+
+[node name="ExitButton" type="Button" parent="MainPanel" unique_id=1418911042]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.319
+anchor_right = 0.5
+anchor_bottom = 0.319
+offset_left = -100.875
+offset_top = 118.287994
+offset_right = 101.375
+offset_bottom = 182.288
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "SALIR"

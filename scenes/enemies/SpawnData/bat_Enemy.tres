@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" format=3 uid="uid://goktio6cmeqi"]
+
+[ext_resource type="PackedScene" uid="uid://bvwgja7rrsi2h" path="res://scenes/enemies/bat.tscn" id="1_hvktr"]
+[ext_resource type="Script" uid="uid://bgcvn4ehtm6nd" path="res://EnemySpawnData.cs" id="1_xcv7h"]
+
+[resource]
+script = ExtResource("1_xcv7h")
+EnemyScene = ExtResource("1_hvktr")
+mapLevel = 2
+metadata/_custom_type_script = "uid://bgcvn4ehtm6nd"

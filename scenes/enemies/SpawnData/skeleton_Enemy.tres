@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" format=3 uid="uid://rgq01t5833gi"]
+
+[ext_resource type="Script" uid="uid://bgcvn4ehtm6nd" path="res://EnemySpawnData.cs" id="1_en2nq"]
+[ext_resource type="PackedScene" uid="uid://d3fdyi4c82vk6" path="res://scenes/enemies/skeleton.tscn" id="1_ypvpm"]
+
+[resource]
+script = ExtResource("1_en2nq")
+EnemyScene = ExtResource("1_ypvpm")
+MinSpawnTimeSeconds = 180.0
+metadata/_custom_type_script = "uid://bgcvn4ehtm6nd"

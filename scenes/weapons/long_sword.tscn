@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://yc5872jasnhp"]
+
+[ext_resource type="Script" uid="uid://da8wgnmjgy3o3" path="res://scripts/weapons/MeleeWeapon.cs" id="1_40j7y"]
+[ext_resource type="Texture2D" uid="uid://c8uvyeyhtd4wr" path="res://sprites/Armas/Slash.png" id="2_40j7y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40j7y"]
+atlas = ExtResource("2_40j7y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu4ir"]
+atlas = ExtResource("2_40j7y")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f15v"]
+atlas = ExtResource("2_40j7y")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tls0"]
+atlas = ExtResource("2_40j7y")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82awt"]
+atlas = ExtResource("2_40j7y")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bmwa"]
+atlas = ExtResource("2_40j7y")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tevma"]
+atlas = ExtResource("2_40j7y")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23pgo"]
+atlas = ExtResource("2_40j7y")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4bmwa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40j7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eu4ir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f15v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tls0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82awt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bmwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tevma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23pgo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7kvn1"]
+radius = 20.024984
+
+[node name="LongSword" type="Area2D" unique_id=1807011337]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_40j7y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=863547306]
+texture_filter = 1
+position = Vector2(-1.6648927, -1.3351066)
+scale = Vector2(1.5415559, 1.2290559)
+sprite_frames = SubResource("SpriteFrames_4bmwa")
+autoplay = "default"
+frame_progress = 0.77693635
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741951445]
+shape = SubResource("CircleShape2D_7kvn1")

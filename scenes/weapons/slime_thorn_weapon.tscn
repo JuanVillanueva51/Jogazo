@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bhwha5p7t3st5"]
+
+[ext_resource type="Script" uid="uid://bc6a1wfah7bhn" path="res://scripts/enemies/EnemyProjectile.cs" id="1_vg43u"]
+[ext_resource type="Texture2D" uid="uid://dg5c5380rtwop" path="res://sprites/Armas/slimeThorn_proyectile.png" id="1_wa1u7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vg43u"]
+radius = 3.0
+
+[node name="SlimeThornWeapon" type="Area2D" unique_id=1010585569]
+script = ExtResource("1_vg43u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=516035855]
+texture_filter = 1
+rotation = 0.78005826
+scale = Vector2(1.1875, 1.1875)
+texture = ExtResource("1_wa1u7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1078884367]
+shape = SubResource("CircleShape2D_vg43u")

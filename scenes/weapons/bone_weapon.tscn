@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://d3ca1kuiywqat"]
+
+[ext_resource type="Script" uid="uid://betje8hbngl27" path="res://scripts/weapons/Bullet.cs" id="1_35587"]
+[ext_resource type="Texture2D" uid="uid://0cg6b884t4qv" path="res://sprites/Armas/boneWeaponAnim.png" id="1_pk0uc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35587"]
+atlas = ExtResource("1_pk0uc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbpk2"]
+atlas = ExtResource("1_pk0uc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k4g6"]
+atlas = ExtResource("1_pk0uc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfkt8"]
+atlas = ExtResource("1_pk0uc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2h2j"]
+atlas = ExtResource("1_pk0uc")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4dwd"]
+atlas = ExtResource("1_pk0uc")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epexf"]
+atlas = ExtResource("1_pk0uc")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksdwk"]
+atlas = ExtResource("1_pk0uc")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lhc4u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35587")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbpk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1k4g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfkt8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2h2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4dwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epexf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksdwk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b52ga"]
+radius = 3.0
+
+[node name="BoneWeapon" type="Area2D" unique_id=782419875]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_35587")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1082794867]
+texture_filter = 1
+position = Vector2(-2.3841858e-07, -2.3841858e-07)
+scale = Vector2(0.484375, 0.484375)
+sprite_frames = SubResource("SpriteFrames_lhc4u")
+autoplay = "default"
+frame_progress = 0.25166148
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152841514]
+shape = SubResource("CircleShape2D_b52ga")

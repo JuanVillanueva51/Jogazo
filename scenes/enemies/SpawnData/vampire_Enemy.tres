@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpawnData" format=3 uid="uid://dl6ba66ur2nhe"]
+
+[ext_resource type="PackedScene" uid="uid://dbhsql4jmv0uh" path="res://scenes/enemies/vampire.tscn" id="1_0xmtr"]
+[ext_resource type="Script" uid="uid://bgcvn4ehtm6nd" path="res://EnemySpawnData.cs" id="1_nrsad"]
+
+[resource]
+script = ExtResource("1_nrsad")
+EnemyScene = ExtResource("1_0xmtr")
+mapLevel = 3
+MinSpawnTimeSeconds = 180.0
+metadata/_custom_type_script = "uid://bgcvn4ehtm6nd"

@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://da3gmxxywvae"]
+
+[ext_resource type="Texture2D" uid="uid://dh5bb5lb5wi0v" path="res://sprites/Personajes/Abad_anim.png" id="1_m6kvd"]
+[ext_resource type="Script" uid="uid://dhdxkt4hymkud" path="res://scripts/player/Player.cs" id="1_spabk"]
+[ext_resource type="Script" uid="uid://tw54rtej0h70" path="res://scripts/managers/WeaponManager.cs" id="3_uq4v0"]
+[ext_resource type="PackedScene" uid="uid://bkporllhh3hq4" path="res://scenes/ui/hud.tscn" id="5_077ra"]
+[ext_resource type="Script" uid="uid://gwkm1pdpvtbd" path="res://scripts/managers/XpManger.cs" id="5_x3337"]
+[ext_resource type="PackedScene" uid="uid://cdu85o7oydgvl" path="res://scenes/ui/level_up_screen.tscn" id="6_ob2il"]
+[ext_resource type="PackedScene" uid="uid://drwax6c8a75dr" path="res://scenes/ui/game_over_screen.tscn" id="7_rk808"]
+[ext_resource type="PackedScene" uid="uid://bq5sfajxnrl7" path="res://scenes/ui/pause_screen.tscn" id="8_sc5dt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbjox"]
+atlas = ExtResource("1_m6kvd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m88ne"]
+atlas = ExtResource("1_m6kvd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gb2ha"]
+atlas = ExtResource("1_m6kvd")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spabk"]
+atlas = ExtResource("1_m6kvd")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq4v0"]
+atlas = ExtResource("1_m6kvd")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oe1s"]
+atlas = ExtResource("1_m6kvd")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3337"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbjox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m88ne")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gb2ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spabk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq4v0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oe1s")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_077ra"]
+radius = 6.0827627
+
+[node name="AbadChar" type="CharacterBody2D" unique_id=1738431630]
+collision_mask = 4
+script = ExtResource("1_spabk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1639994062]
+texture_filter = 1
+position = Vector2(-1, -6)
+sprite_frames = SubResource("SpriteFrames_x3337")
+animation = &"idle"
+autoplay = "walk"
+frame_progress = 0.5099429
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=992349223]
+shape = SubResource("CircleShape2D_077ra")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=137049379]
+zoom = Vector2(2, 2)
+
+[node name="WeaponManager" type="Node" parent="." unique_id=948394788]
+script = ExtResource("3_uq4v0")
+
+[node name="XpManger" type="Node" parent="." unique_id=1308695509]
+script = ExtResource("5_x3337")
+
+[node name="Hud" parent="." unique_id=263779862 instance=ExtResource("5_077ra")]
+
+[node name="LevelUpScreen" parent="." unique_id=699232108 instance=ExtResource("6_ob2il")]
+
+[node name="GameOverScreen" parent="." unique_id=565696738 instance=ExtResource("7_rk808")]
+
+[node name="PauseScreen" parent="." unique_id=342732342 instance=ExtResource("8_sc5dt")]
+process_mode = 3

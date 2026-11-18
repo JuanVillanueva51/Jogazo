@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://cxtkkytfmr2y0"]
+
+[ext_resource type="Texture2D" uid="uid://ckc1eitpgsa8l" path="res://sprites/GUI/background1.png" id="1_4ro5t"]
+[ext_resource type="Script" uid="uid://dqplv4nn7x35k" path="res://scripts/gui/ClassSelect.cs" id="1_cplp0"]
+[ext_resource type="Texture2D" uid="uid://cwqf3qyokm8h" path="res://sprites/Classes/Caballero.png" id="3_kbpa8"]
+[ext_resource type="Texture2D" uid="uid://c3xl3n5g5qf8k" path="res://sprites/Classes/Arco.png" id="4_xxt20"]
+[ext_resource type="Texture2D" uid="uid://cwlhguf3easab" path="res://sprites/Classes/Asesino.png" id="5_bwon1"]
+[ext_resource type="Texture2D" uid="uid://cq0dk330aoe3w" path="res://sprites/Classes/Mazo-Berseker.png" id="6_l627p"]
+[ext_resource type="Texture2D" uid="uid://bm0y5rndkq48x" path="res://sprites/Classes/Catalizador de energia.png" id="7_uun3l"]
+[ext_resource type="Texture2D" uid="uid://bpvt36cl246em" path="res://sprites/Classes/Hacha de acero.png" id="8_ywtyv"]
+[ext_resource type="Texture2D" uid="uid://bbm6dfvvefkfd" path="res://sprites/Classes/Libro Magico.png" id="9_qame7"]
+[ext_resource type="Texture2D" uid="uid://dhal73sx4ffln" path="res://sprites/Classes/Lanza de Acero.png" id="10_3aykb"]
+
+[node name="ClassSelect" type="Control" unique_id=1341356130]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cplp0")
+ClassPortraits = Array[Texture2D]([ExtResource("3_kbpa8"), ExtResource("4_xxt20"), ExtResource("5_bwon1"), ExtResource("6_l627p"), ExtResource("7_uun3l"), ExtResource("8_ywtyv"), ExtResource("9_qame7"), ExtResource("10_3aykb")])
+
+[node name="Background" type="TextureRect" parent="." unique_id=892550624]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 223.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.83794224, 0.8424679)
+texture = ExtResource("1_4ro5t")
+stretch_mode = 3
+
+[node name="BackButton" type="Button" parent="." unique_id=583464347]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 591.0
+offset_right = 136.0
+offset_bottom = 631.0
+text = "Regresar"
+
+[node name="LeftPanel" type="Panel" parent="." unique_id=1641112336]
+custom_minimum_size = Vector2(300, 500)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.063
+anchor_top = 0.5
+anchor_right = 0.381
+anchor_bottom = 0.50600004
+offset_left = 0.42399597
+offset_top = -246.0
+offset_right = -65.91202
+offset_bottom = 250.11197
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="LeftPanel" unique_id=1767687478]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 293.0
+offset_bottom = 489.0
+
+[node name="Label" type="Label" parent="LeftPanel/VBox" unique_id=1673453951]
+layout_mode = 2
+text = "SELECCION DE CLASE"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LeftPanel/VBox" unique_id=1795209161]
+custom_minimum_size = Vector2(0, 450)
+layout_mode = 2
+
+[node name="ClassGrid" type="GridContainer" parent="LeftPanel/VBox/ScrollContainer" unique_id=488020998]
+layout_mode = 2
+columns = 4
+
+[node name="TextureButton" type="TextureButton" parent="LeftPanel/VBox/ScrollContainer/ClassGrid" unique_id=1238929427]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("3_kbpa8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton2" type="TextureButton" parent="LeftPanel/VBox/ScrollContainer/ClassGrid" unique_id=107029220]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("4_xxt20")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton3" type="TextureButton" parent="LeftPanel/VBox/ScrollContainer/ClassGrid" unique_id=1129618810]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("5_bwon1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton4" type="TextureButton" parent="LeftPanel/VBox/ScrollContainer/ClassGrid" unique_id=1405994011]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("6_l627p")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton5" type="TextureButton" parent="LeftPanel/VBox/ScrollContainer/ClassGrid" unique_id=1835592179]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("7_uun3l")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton6" type="TextureButton" parent="LeftPanel/VBox/ScrollContainer/ClassGrid" unique_id=640849957]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("8_ywtyv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton7" type="TextureButton" parent="LeftPanel/VBox/ScrollContainer/ClassGrid" unique_id=698262943]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("9_qame7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton8" type="TextureButton" parent="LeftPanel/VBox/ScrollContainer/ClassGrid" unique_id=1242800751]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("10_3aykb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RightPanel" type="Panel" parent="." unique_id=333147658]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 773.0
+offset_top = -246.0
+offset_right = 1073.0
+offset_bottom = 254.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="RightPanel" unique_id=899841032]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 294.0
+offset_bottom = 493.0
+
+[node name="ClassPreview" type="TextureRect" parent="RightPanel/VBox" unique_id=2084929748]
+texture_filter = 1
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+expand_mode = 1
+
+[node name="ClassNameLabel" type="Label" parent="RightPanel/VBox" unique_id=630392709]
+layout_mode = 2
+
+[node name="ClassDescLabel" type="Label" parent="RightPanel/VBox" unique_id=1576547576]
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="RightPanel/VBox" unique_id=1414850187]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="ClassBuffsLabel" type="Label" parent="RightPanel/VBox" unique_id=1268586590]
+custom_minimum_size = Vector2(287, 23)
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="RightPanel/VBox/ClassBuffsLabel" unique_id=352284870]
+layout_mode = 0
+offset_left = 278.0
+offset_top = -1.0
+offset_right = 286.0
+offset_bottom = 24.0
+
+[node name="PlayButton" type="Button" parent="RightPanel/VBox" unique_id=17730738]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+text = "JUGAR"

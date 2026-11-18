@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://cdu85o7oydgvl"]
+
+[ext_resource type="Script" uid="uid://dl6afv10a6fp1" path="res://scripts/gui/LevelUpScreen.cs" id="1_tujht"]
+[ext_resource type="Texture2D" uid="uid://bimhmidqxap1h" path="res://sprites/GUI/marcochafa.png" id="2_16lk3"]
+
+[node name="LevelUpScreen" type="CanvasLayer" unique_id=699232108]
+process_mode = 3
+script = ExtResource("1_tujht")
+
+[node name="Panel" type="Panel" parent="." unique_id=751846826]
+layout_direction = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=139208219]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.75
+offset_top = -105.5
+offset_right = 182.75
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="Panel/VBox" unique_id=974700783]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 26
+text = "Select Your Upgrade"
+horizontal_alignment = 1
+
+[node name="UpgradeCard1" type="Button" parent="Panel/VBox" unique_id=182423723]
+layout_mode = 2
+text = "d"
+
+[node name="UpgradeCard2" type="Button" parent="Panel/VBox" unique_id=1420848325]
+layout_mode = 2
+text = "h"
+
+[node name="UpgradeCard3" type="Button" parent="Panel/VBox" unique_id=1764289965]
+layout_mode = 2
+text = "h"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBox" unique_id=588945882]
+layout_mode = 2
+
+[node name="SkipButton" type="Button" parent="Panel/VBox/HBoxContainer" unique_id=655240295]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Skip"
+
+[node name="RerollButton" type="Button" parent="Panel/VBox/HBoxContainer" unique_id=1503382363]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reroll
+"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1339292698]
+offset_left = 362.0
+offset_top = 180.0
+offset_right = 788.0
+offset_bottom = 446.0
+mouse_filter = 2
+texture = ExtResource("2_16lk3")
+expand_mode = 1
