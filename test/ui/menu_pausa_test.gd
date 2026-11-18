@@ -11,7 +11,7 @@ const CHAR_GRID = "LeftPanel/VBoxContainer/ScrollContainer/CharGrid"
 const CLASS_GRID = "LeftPanel/VBox/ScrollContainer/ClassGrid"
 func test_pause_and_resume():
 	var tree := Engine.get_main_loop() as SceneTree
-
+	
 	# Cargar el menú de pausa
 	var packed_scene := load(PAUSE_SCREEN_PATH) as PackedScene
 	assert_object(packed_scene).is_not_null()
@@ -21,26 +21,34 @@ func test_pause_and_resume():
 
 	# Comprobar que inicia oculto
 	assert_bool(pause_screen.visible).is_false()
+	await _pausa(3.0)
 
 	# Simular la pausa
 	pause_screen.PauseGame()
+	await _pausa(3.0)
 
 	assert_bool(pause_screen.visible).is_true()
 	assert_bool(tree.paused).is_true()
+	await _pausa(1.0)
 
 	# Reanudar
 	pause_screen.Resume()
+	await _pausa(3.0)
 
 	assert_bool(pause_screen.visible).is_false()
 	assert_bool(tree.paused).is_false()
+	await _pausa(1.0)
 
 	# Limpiar
 	pause_screen.queue_free()
+	await _pausa(3.0)
 
 
 func _tree() -> SceneTree:
 	return Engine.get_main_loop() as SceneTree
 
+func _pausa(segundos: float) -> void:
+	await _tree().create_timer(segundos).timeout
 
 func _wait_for_scene(path: String, timeout_ms := 5000) -> bool:
 	var elapsed := 0
