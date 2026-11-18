@@ -1,43 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites id="2026-11-18" name="report_1" tests="16" failures="0" skipped="0" flaky="0" time="0.000">
-	<testsuite id="0" name="tutorial_completado_test" package="test/tutorial" timestamp="2026-11-18T21:14:16" hostname="localhost" tests="1" failures="0" errors="0" skipped="0" flaky="0" time="9.694">
-		<testcase name="test_tutorial_completo" classname="tutorial_completado_test" time="9.680">
+<testsuites id="2026-11-18" name="report_1" tests="28" failures="0" skipped="0" flaky="0" time="0.000">
+	<testsuite id="0" name="casos_de_prueba_test" package="test" timestamp="2026-11-18T22:53:03" hostname="localhost" tests="12" failures="0" errors="0" skipped="0" flaky="0" time="10.191">
+		<testcase name="test_UT_01_reduccion_de_dano_por_armadura" classname="casos_de_prueba_test" time="0.015">
+		</testcase>
+		<testcase name="test_UT_02_bonificaciones_de_dano" classname="casos_de_prueba_test" time="0.031">
+		</testcase>
+		<testcase name="test_UT_03_escalado_por_dificultad" classname="casos_de_prueba_test" time="0.005">
+		</testcase>
+		<testcase name="test_UT_04_nivel_de_enemigo" classname="casos_de_prueba_test" time="0.005">
+		</testcase>
+		<testcase name="test_UT_05_tabla_de_botin_con_pesos" classname="casos_de_prueba_test" time="0.065">
+		</testcase>
+		<testcase name="test_UT_06_MD01_mover_arriba" classname="casos_de_prueba_test" time="1.637">
+		</testcase>
+		<testcase name="test_UT_06_MD02_mover_abajo" classname="casos_de_prueba_test" time="1.199">
+		</testcase>
+		<testcase name="test_UT_06_MD03_mover_izquierda" classname="casos_de_prueba_test" time="1.183">
+		</testcase>
+		<testcase name="test_UT_06_MD04_mover_derecha" classname="casos_de_prueba_test" time="1.200">
+		</testcase>
+		<testcase name="test_UT_06_MD05_fase_1_del_tutorial_completada" classname="casos_de_prueba_test" time="2.544">
+		</testcase>
+		<testcase name="test_PUI_111_menu_de_pausa_se_muestra" classname="casos_de_prueba_test" time="1.069">
+		</testcase>
+		<testcase name="test_PUI_112_menu_de_pausa_tiene_reanudar_configuracion_y_salir" classname="casos_de_prueba_test" time="1.188">
 		</testcase>
 	</testsuite>
-	<testsuite id="1" name="menu_demo_flujo_test" package="test/ui" timestamp="2026-11-18T21:14:25" hostname="localhost" tests="4" failures="0" errors="0" skipped="0" flaky="0" time="22.804">
-		<testcase name="test_demo_abre_seleccion_de_personaje" classname="menu_demo_flujo_test" time="1.546">
-		</testcase>
-		<testcase name="test_jugar_no_activa_demo" classname="menu_demo_flujo_test" time="1.516">
-		</testcase>
-		<testcase name="test_confirmar_personaje_abre_seleccion_de_clase" classname="menu_demo_flujo_test" time="1.908">
-		</testcase>
-		<testcase name="test_flujo_demo_completo_inicia_la_partida" classname="menu_demo_flujo_test" time="17.812">
+	<testsuite id="1" name="tutorial_completado_test" package="test/tutorial" timestamp="2026-11-18T22:53:14" hostname="localhost" tests="1" failures="0" errors="0" skipped="0" flaky="0" time="9.027">
+		<testcase name="test_tutorial_completo" classname="tutorial_completado_test" time="9.012">
 		</testcase>
 	</testsuite>
-	<testsuite id="2" name="menu_pantallas_test" package="test/ui" timestamp="2026-11-18T21:14:48" hostname="localhost" tests="9" failures="0" errors="0" skipped="0" flaky="0" time="36.956">
-		<testcase name="test_menu_principal_muestra_jugar_y_demo" classname="menu_pantallas_test" time="1.516">
+	<testsuite id="2" name="menu_demo_flujo_test" package="test/ui" timestamp="2026-11-18T22:53:23" hostname="localhost" tests="4" failures="0" errors="0" skipped="0" flaky="0" time="22.590">
+		<testcase name="test_demo_abre_seleccion_de_personaje" classname="menu_demo_flujo_test" time="1.536">
 		</testcase>
-		<testcase name="test_menu_principal_muestra_todas_las_opciones_y_creditos" classname="menu_pantallas_test" time="1.530">
+		<testcase name="test_jugar_no_activa_demo" classname="menu_demo_flujo_test" time="1.515">
 		</testcase>
-		<testcase name="test_seleccion_personaje_aviso_demo:0 (true)" classname="menu_pantallas_test" time="1.515">
+		<testcase name="test_confirmar_personaje_abre_seleccion_de_clase" classname="menu_demo_flujo_test" time="1.748">
 		</testcase>
-		<testcase name="test_seleccion_personaje_aviso_demo:1 (false)" classname="menu_pantallas_test" time="1.519">
-		</testcase>
-		<testcase name="test_seleccion_personaje_primero_por_defecto" classname="menu_pantallas_test" time="1.524">
-		</testcase>
-		<testcase name="test_seleccion_personaje_elegir_cada_uno" classname="menu_pantallas_test" time="9.221">
-		</testcase>
-		<testcase name="test_seleccion_clase_texto_segun_modo:0 (true, &apos;MODO DEMO: tutorial + un mapa rápido y caótico&apos;)" classname="menu_pantallas_test" time="1.623">
-		</testcase>
-		<testcase name="test_seleccion_clase_texto_segun_modo:1 (false, &apos;Dificultad:&apos;)" classname="menu_pantallas_test" time="1.520">
-		</testcase>
-		<testcase name="test_seleccion_clase_elegir_cada_una" classname="menu_pantallas_test" time="16.950">
+		<testcase name="test_flujo_demo_completo_inicia_la_partida" classname="menu_demo_flujo_test" time="17.767">
 		</testcase>
 	</testsuite>
-	<testsuite id="3" name="menu_pausa_test" package="test/ui" timestamp="2026-11-18T21:15:25" hostname="localhost" tests="2" failures="0" errors="0" skipped="0" flaky="0" time="0.409">
-		<testcase name="test_pause_and_resume" classname="menu_pausa_test" time="0.011">
+	<testsuite id="3" name="menu_pantallas_test" package="test/ui" timestamp="2026-11-18T22:53:45" hostname="localhost" tests="9" failures="0" errors="0" skipped="0" flaky="0" time="36.980">
+		<testcase name="test_menu_principal_muestra_jugar_y_demo" classname="menu_pantallas_test" time="1.531">
 		</testcase>
-		<testcase name="test_pause_screen_buttons_exist" classname="menu_pausa_test" time="0.382">
+		<testcase name="test_menu_principal_muestra_todas_las_opciones_y_creditos" classname="menu_pantallas_test" time="1.524">
+		</testcase>
+		<testcase name="test_seleccion_personaje_aviso_demo:0 (true)" classname="menu_pantallas_test" time="1.510">
+		</testcase>
+		<testcase name="test_seleccion_personaje_aviso_demo:1 (false)" classname="menu_pantallas_test" time="1.521">
+		</testcase>
+		<testcase name="test_seleccion_personaje_primero_por_defecto" classname="menu_pantallas_test" time="1.511">
+		</testcase>
+		<testcase name="test_seleccion_personaje_elegir_cada_uno" classname="menu_pantallas_test" time="9.231">
+		</testcase>
+		<testcase name="test_seleccion_clase_texto_segun_modo:0 (true, &apos;MODO DEMO: tutorial + un mapa rápido y caótico&apos;)" classname="menu_pantallas_test" time="1.633">
+		</testcase>
+		<testcase name="test_seleccion_clase_texto_segun_modo:1 (false, &apos;Dificultad:&apos;)" classname="menu_pantallas_test" time="1.533">
+		</testcase>
+		<testcase name="test_seleccion_clase_elegir_cada_una" classname="menu_pantallas_test" time="16.944">
+		</testcase>
+	</testsuite>
+	<testsuite id="4" name="menu_pausa_test" package="test/ui" timestamp="2026-11-18T22:54:22" hostname="localhost" tests="2" failures="0" errors="0" skipped="0" flaky="0" time="14.462">
+		<testcase name="test_pause_and_resume" classname="menu_pausa_test" time="13.939">
+		</testcase>
+		<testcase name="test_pause_screen_buttons_exist" classname="menu_pausa_test" time="0.509">
 		</testcase>
 	</testsuite>
 </testsuites>
